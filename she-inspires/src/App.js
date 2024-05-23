@@ -1,13 +1,26 @@
-import './App.css';
-import Button from 'react-bootstrap/Button'; 
+
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar'; 
+
+// Placeholder components 
+function HomePage() { return <div>Home Page Content</div>; }
+function Stories() { return <div>Stories Page Content</div>; }
+function Resources() { return <div>Resources Page Content</div>; }
+function Community() { return <div>Community Page Content</div>; }
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Button variant="primary">This is a Bootstrap Button!</Button>
-      </header>
-    </div>
+    <BrowserRouter> 
+      <NavBar /> {}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/stories" element={<Stories />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/community" element={<Community />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
