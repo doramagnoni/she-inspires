@@ -1,0 +1,21 @@
+.NavBar {
+    background-color: white;
+    border: 2px solid #B39CD0;
+    
+  }
+  .NavBar:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease; 
+}
+
+/* Normal Link Style */
+.NavBar_NavBar__5idnY { 
+    color: #2f22eb; /* Example color */
+    transition: transform 0.3s ease; /* Add transition */
+}
+
+/* Hover Effect */
+.NavBar_NavBar__5idnY:hover {
+    transform: scale(1.05); /* Example: Scale up on hover */
+    /* Add other hover styles as desired */
+}

@@ -1,7 +1,6 @@
-
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import styles from "./App.module.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar'; 
 
 // Placeholder components 
@@ -13,6 +12,7 @@ function Community() { return <div>Community Page Content</div>; }
 function App() {
   return (
     <BrowserRouter> 
+      <div className={styles.App}>
       <NavBar /> {}
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -20,6 +20,7 @@ function App() {
         <Route path="/resources" element={<Resources />} />
         <Route path="/community" element={<Community />} />
       </Routes>
+      </div>
     </BrowserRouter>
   );
 }
