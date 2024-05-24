@@ -35,7 +35,7 @@
     font-weight: bold;
 }
 
-/* Optional: Hover Effect */
+
 .hero .discover-btn:hover {
-    background-color: #0069d9; /* Slightly darker shade of blue */
+    background-color: #0069d9; 
 }
