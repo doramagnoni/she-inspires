@@ -11,7 +11,7 @@ function Hero() {
           <Col xs={12} md={8} lg={6} className="text-center">
             <h1>She Inspires</h1>
             <p className="lead">Empowering women through stories and connection.</p>
-            <Button variant="primary" as={Link} to="/stories">Discover Stories</Button>
+            <Button variant="primary" as={Link} to="/stories" className="discover-btn">Discover Stories</Button>
           </Col>
         </Row>
       </Container>
