@@ -3,15 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
-import {
-  Form,
-  Button,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -20,10 +12,10 @@ const SignUpForm = () => {
     password1: "",
     password2: "",
   });
+
   const { username, password1, password2 } = signUpData;
-
   const [errors, setErrors] = useState({});
-
+  const [generalError, setGeneralError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -31,15 +23,26 @@ const SignUpForm = () => {
       ...signUpData,
       [event.target.name]: event.target.value,
     });
+    
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [event.target.name]: null,
+    }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (password1 !== password2) {
+        setErrors({ password2: ["Passwords don't match"]});
+        return; 
+    }
+
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       navigate("/signin");
-    } catch (err) {
-      setErrors(err.response?.data);
+    } catch (error) {
+        setErrors({}); 
+        setGeneralError("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -107,11 +110,13 @@ const SignUpForm = () => {
             >
               Sign up
             </Button>
-            {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
-                {message}
+
+           
+           {generalError && (
+              <Alert variant="danger" className="mt-3">
+                {generalError}
               </Alert>
-            ))}
+            )} 
           </Form>
         </Container>
 
@@ -127,3 +132,4 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
+
