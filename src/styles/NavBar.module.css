@@ -1,12 +1,20 @@
 .NavBar {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-  }
+  background-color: white;
+  border: 2px solid #B39CD0;
   
-  .NavLink {
-    padding: 5px;
-  }
-  
-  .Active i {
-    color: #2142b2;
-  }
+}
+.NavBar:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease; 
+}
+
+/* Normal Link Style */
+.NavBar_NavBar__5idnY { 
+  color: #2f22eb; /* Example color */
+  transition: transform 0.3s ease; 
+}
+
+/* Hover Effect */
+.NavBar_NavBar__5idnY:hover {
+  transform: scale(1.05); 
+}

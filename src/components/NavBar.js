@@ -16,10 +16,10 @@ const NavBar = () => {
           <Nav className="ml-auto text-left">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/stories">Stories</Nav.Link>
-              <Nav.Link as={Link} to="/resources">Resources</Nav.Link>
+              <Nav.Link as={Link} to="/Forum">Forum</Nav.Link>
               <Nav.Link as={Link} to="/community">Community</Nav.Link>
-              <Nav.Link as={Link} to="/sign-in">Sign in</Nav.Link>
-              <Nav.Link as={Link} to="/sign-up">Sign up</Nav.Link>
+              <Nav.Link as={Link} to="/signin">Sign in</Nav.Link>
+              <Nav.Link as={Link} to="/signup">Sign up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
