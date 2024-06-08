@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
+import SignInForm from "./pages/auth/SignInForm";
 import Hero from './components/Hero';
 import Stories from './components/Stories';
 import Forum from './components/Forum'; 
@@ -33,7 +34,7 @@ function App() {
               <Stories stories={stories} /> 
             </>
           }/>
-          <Route path="/signin" element={<h1>Sign in</h1>} />
+          <Route path="/signin" element={<SignInForm />} /> 
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/stories" element={<Stories />} />
           <Route path="/resources" element={<Forum />} />
