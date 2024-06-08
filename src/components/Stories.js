@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from "../styles/Stories.module.css";
 
-function FeaturedStories({ stories }) { 
+function Stories({ stories }) {
 
 
     return (
@@ -36,4 +36,4 @@ function FeaturedStories({ stories }) {
     );
 }
 
-export default FeaturedStories;
+export default Stories; 
