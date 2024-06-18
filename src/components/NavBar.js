@@ -1,7 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import axios from "axios";
@@ -24,14 +23,20 @@ const NavBar = () => {
     <>
       <Nav.Link as={NavLink} to="/profile" className={styles.NavLink}>
         {currentUser?.username}
+        <img
+          src={currentUser?.profile_image}
+          alt="Profile"
+          className={styles.ProfileImage}
+          height={40}
+        />
       </Nav.Link>
-      <Nav.Link as={NavLink} to="/stories" className={styles.NavLink}>
+      <Nav.Link as={NavLink} to="/stories" className={styles.NavLink}> <i className="fas fa-book-open"></i>
         Stories
       </Nav.Link>
-      <Nav.Link as={NavLink} to="/forum" className={styles.NavLink}>
+      <Nav.Link as={NavLink} to="/forum" className={styles.NavLink}> <i className="fas fa-comments"></i>
         Forum
       </Nav.Link>
-      <Nav.Link as={NavLink} to="/community" className={styles.NavLink}>
+      <Nav.Link as={NavLink} to="/community" className={styles.NavLink}> <i className="fas fa-users"></i>
         Community
       </Nav.Link>
       <Nav.Link as={NavLink} to="/" onClick={handleSignOut} className={styles.NavLink}>
@@ -42,12 +47,13 @@ const NavBar = () => {
   
   const loggedOutIcons = (
     <>
-      <Nav.Link as={NavLink} to="/signin" className={styles.NavLink}>
+      <Nav.Link as={NavLink} to="/signin" className={styles.NavLink}><i className="fas fa-sign-in-alt"></i>
         Sign in
       </Nav.Link>
-      <Nav.Link as={NavLink} to="/signup" className={styles.NavLink}>
+      <Nav.Link as={NavLink} to="/signup" className={styles.NavLink}><i className="fas fa-user-plus"></i>
         Sign up
       </Nav.Link>
+      
     </>
   );
 
@@ -55,12 +61,12 @@ const NavBar = () => {
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
         <Navbar.Brand>
-          <img src={logo} alt="logo" height="45" />
+         <span className={styles.Title}>She Inspires</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
-          <Nav.Link as={NavLink} to="/" exact="true" className={styles.NavLink}>
+          <Nav.Link as={NavLink} to="/" exact="true" className={styles.NavLink}><i className="fas fa-home"></i>
            Home
           </Nav.Link>
             {currentUser && currentUser.username ? loggedInIcons : loggedOutIcons}
