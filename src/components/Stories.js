@@ -4,21 +4,19 @@ import { Link } from 'react-router-dom';
 import styles from "../styles/Stories.module.css";
 
 function Stories({ stories }) {
-
-
     return (
         <section className={styles['featured-stories']}>
             <Container>
-                <h2>Inspiring Stories You'll Love</h2> 
+                <h2 className={styles['section-title']}>Inspiring Stories You'll Love</h2>
                 <Row>
                     {stories.map((story) => (
-                        <Col key={story.id} xs={12} md={6} lg={4}> 
-                            <Card>
-                                <Card.Img variant="top" src={story.image_url} />
+                        <Col key={story.id} xs={12} md={6} lg={4}>
+                            <Card className={styles.card}>
+                                <Card.Img variant="top" src={story.image_url} className={styles['card-img-top']} />
                                 <Card.Body>
-                                    <Card.Title>{story.title}</Card.Title>
-                                    <Card.Text>{story.summary}</Card.Text> 
-                                    <Button variant="primary" as={Link} to={`/stories/${story.id}`}>
+                                    <Card.Title className={styles['card-title']}>{story.title}</Card.Title>
+                                    <Card.Text className={styles['card-text']}>{story.summary}</Card.Text>
+                                    <Button variant="primary" as={Link} to={`/stories/${story.id}`} className={styles['btn-read-more']}>
                                         Read More
                                     </Button>
                                 </Card.Body>
@@ -35,5 +33,6 @@ function Stories({ stories }) {
         </section>
     );
 }
+
 
 export default Stories; 

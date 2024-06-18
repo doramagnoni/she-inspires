@@ -1,17 +1,25 @@
 .Hero {
-    background-image: url('../assets/hero.png'); 
-    background-size: cover; 
-    background-position: center; 
-    min-height: 400px; 
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    text-align: center;  
-    margin-top: 20px;
-    
-  }
-  
-  .Hero h1 {
+  position: relative;
+  background-image: url('../assets/hero.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+
+}
+
+.HeroContent {
+  position: relative;
+  z-index: 1; 
+}
+
+.Hero h1 {
     color: white; 
     font-size: 3rem; 
     font-weight: bold;
@@ -19,24 +27,28 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
-  .Hero p {
+.Hero p {
     color: white; 
     font-size: 1.25rem;
     margin-bottom: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
-  .hero .discover-btn {
-    background-color: #c264e5;
-    color: white;
+  .discover-btn {
     padding: 15px 30px;
     border: none;
-    border-radius: 5px; 
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-}
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  /* Custom hover styles for discover-btn */
+  .discover-btn:hover,
+  .discover-btn:focus {
+    background-color: #c264e5; /* Your custom primary color */
+    color: white; /* Text color on hover */
+    transform: scale(1.05); /* Example of scaling on hover */
+  }
 
 
-.hero .discover-btn:hover {
-    background-color: #0069d9; 
-}

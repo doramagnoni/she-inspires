@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
@@ -6,6 +6,8 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import PansiesImage from '../../assets/pansies.JPG';
+
 
 
 function SignInForm() {
@@ -100,7 +102,9 @@ function SignInForm() {
           </Link>
         </Container>
       </Col>
-      
+      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
+       <img src={PansiesImage} alt="Pansies" className="img-fluid" />
+      </Col>
     </Row>
   );
 }

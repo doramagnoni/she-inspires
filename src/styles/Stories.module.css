@@ -1,0 +1,47 @@
+
+.featured-stories {
+    padding: 50px 0; 
+  }
+  
+  .featured-stories h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333; 
+  }
+  
+  .card {
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
+    object-fit: cover;
+    height: 200px; 
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: #666; 
+  }
+  
+  .btn-read-more {
+    background-color: #c264e5;
+    color: white;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .btn-read-more:hover {
+    background-color: #a84ac3; 
+    transform: scale(1.05);
+  }
+  
