@@ -2,7 +2,7 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import { Route, Routes } from 'react-router-dom';
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
@@ -10,10 +10,8 @@ import Hero from './components/Hero';
 import Stories from './components/Stories';
 import Forum from './components/Forum'; 
 import Community from './components/Community'; 
-import axios from "axios";
 
-export const CurrentUserContext = createContext(null);
-export const SetCurrentUserContext = createContext(null);
+
 
 function App() {
 
@@ -29,24 +27,9 @@ function App() {
     ]);
   }, []); 
 
-  const [currentUser, setCurrentUser] = useState(null);
-
-  const handleMount = async () => {
-    try {
-      const { data } = await axios.get("dj-rest-auth/user/");
-      setCurrentUser(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    handleMount();
-  }, []);
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <SetCurrentUserContext.Provider value={setCurrentUser}>
+
           <div className={styles.App}>
             <NavBar />
             <Container className={styles.Main}>
@@ -66,8 +49,6 @@ function App() {
               </Routes>
             </Container>
           </div>
-      </SetCurrentUserContext.Provider>
-    </CurrentUserContext.Provider>
   );
 }
 

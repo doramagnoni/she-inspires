@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
+import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App /> 
+    <CurrentUserProvider>
+        <App />
+    </CurrentUserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
