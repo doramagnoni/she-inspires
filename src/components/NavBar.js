@@ -41,13 +41,12 @@ const NavBar = () => {
        <i className="fas fa-heart"></i> Liked
       </Nav.Link>
 
-      <Nav.Link as={NavLink} to="/profile" className={styles.NavLink}>
+      <Nav.Link as={NavLink} to="/profile" className={`${styles.NavLink} ${styles.ProfileLink}`}>
         {currentUser?.username}
         <img
           src={currentUser?.profile_image}
           alt="Profile"
           className={styles.ProfileImage}
-          height={40}
         />
       </Nav.Link>
       <Nav.Link as={NavLink} to="/" onClick={handleSignOut} className={styles.NavLink}>
@@ -72,7 +71,7 @@ const NavBar = () => {
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
         <Navbar.Brand>
-         <span className={styles.Title}>She Inspires</span>
+         <span className={styles.Title}>She Inspires.</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

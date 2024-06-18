@@ -6,28 +6,51 @@
 .NavBar:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 
 .NavLink {
-  color: #333; /* Example text color */
+  color: #333; 
   text-decoration: none;
-  margin-right: 10px; /* Example margin */
-  font-size: 14px; /* Example font size */
-  padding: 8px 10px; /* Example padding */
+  margin-right: 10px; 
+  font-size: 14px; 
+  padding: 8px 10px; 
+  display: flex;
+  align-items: center;
 }
 
 .NavLink:hover {
-  color: #23aa94; /* Example hover color */
+  color: #23aa94; 
+  background-color: #E3E3E3;
+  border-radius: 5px;
 }
+
+.Title {
+  margin-right: 20px; 
+  font-size: 24px; 
+  font-weight: 400;
+  color: #333; 
+}
+
 
 i {
-  margin-right: 5px;
-  color: #23aa94;
-  font-size: 18px; /* Adjust icon spacing */
+  margin-right: 2px;
+  color: #4D8076;
+  font-size: 18px; 
+}
+
+.NavLink:hover i {
+  color:#23aa94; 
 }
 
 
-.NavLink.active {
-  font-weight: bold; /* Example: Active link styling */
+.ProfileImage {
+  margin-left: 6px; 
+  border-radius: 50%; 
+  height: 30px; 
+  width: 30px; 
+  border: 2px solid #B39CD0; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
+
