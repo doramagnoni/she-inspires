@@ -1,5 +1,5 @@
 .NavBar {
-  background-color: white;
+  background-color: #FBEAFF;
   border: 2px solid #B39CD0;
   
 }
@@ -8,14 +8,26 @@
   transition: transform 0.3s ease; 
 }
 
-/* Normal Link Style */
-.NavBar_NavBar__5idnY { 
-  color: #2f22eb; /* Example color */
-  transition: transform 0.3s ease; 
+
+.NavLink {
+  color: #333; /* Example text color */
+  text-decoration: none;
+  margin-right: 10px; /* Example margin */
+  font-size: 14px; /* Example font size */
+  padding: 8px 10px; /* Example padding */
 }
 
-/* Hover Effect */
-.NavBar_NavBar__5idnY:hover {
-  transform: scale(1.05); 
+.NavLink:hover {
+  color: #23aa94; /* Example hover color */
 }
 
+i {
+  margin-right: 5px;
+  color: #23aa94;
+  font-size: 18px; /* Adjust icon spacing */
+}
+
+
+.NavLink.active {
+  font-weight: bold; /* Example: Active link styling */
+}

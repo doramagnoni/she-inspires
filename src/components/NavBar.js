@@ -21,15 +21,6 @@ const NavBar = () => {
 
  const loggedInIcons = (
     <>
-      <Nav.Link as={NavLink} to="/profile" className={styles.NavLink}>
-        {currentUser?.username}
-        <img
-          src={currentUser?.profile_image}
-          alt="Profile"
-          className={styles.ProfileImage}
-          height={40}
-        />
-      </Nav.Link>
       <Nav.Link as={NavLink} to="/stories" className={styles.NavLink}> <i className="fas fa-book-open"></i>
         Stories
       </Nav.Link>
@@ -38,6 +29,26 @@ const NavBar = () => {
       </Nav.Link>
       <Nav.Link as={NavLink} to="/community" className={styles.NavLink}> <i className="fas fa-users"></i>
         Community
+      </Nav.Link>
+
+      <Nav.Link as={NavLink} to="/posts/create" className={styles.NavLink}>
+       <i className="fas fa-plus-square"></i> Post
+      </Nav.Link>
+      <Nav.Link as={NavLink} to="/feed" className={styles.NavLink}>
+       <i className="fas fa-stream"></i> Feed
+      </Nav.Link>
+      <Nav.Link as={NavLink} to="/liked" className={styles.NavLink}>
+       <i className="fas fa-heart"></i> Liked
+      </Nav.Link>
+
+      <Nav.Link as={NavLink} to="/profile" className={styles.NavLink}>
+        {currentUser?.username}
+        <img
+          src={currentUser?.profile_image}
+          alt="Profile"
+          className={styles.ProfileImage}
+          height={40}
+        />
       </Nav.Link>
       <Nav.Link as={NavLink} to="/" onClick={handleSignOut} className={styles.NavLink}>
         <i className="fas fa-sign-out-alt"></i> Sign out
