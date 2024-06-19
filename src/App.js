@@ -10,6 +10,7 @@ import Hero from './components/Hero';
 import Stories from './components/Stories';
 import Forum from './components/Forum'; 
 import Community from './components/Community'; 
+import PostCreateForm from "./pages/posts/PostCreateForm";
 
 
 
@@ -45,6 +46,7 @@ function App() {
                 <Route path="/stories" element={<Stories stories={stories} />} />
                 <Route path="/resources" element={<Forum />} />
                 <Route path="/community" element={<Community />} />
+                <Route path="/posts/create" element={<PostCreateForm />} />
                 <Route path="*" element={<p>Page not found!</p>} />
               </Routes>
             </Container>
