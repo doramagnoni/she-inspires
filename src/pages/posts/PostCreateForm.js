@@ -90,7 +90,14 @@ function PostCreateForm() {
                   <Asset src={Upload} message="Click or tap to upload an image" />
                 </Form.Label>
               )}
-              <Form.File id="image-upload" accept="image/*" onChange={handleChangeImage} />
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Upload Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                />
+              </Form.Group>
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
           </Container>
