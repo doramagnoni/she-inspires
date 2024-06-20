@@ -11,6 +11,7 @@ import Stories from './components/Stories';
 import Forum from './components/Forum'; 
 import Community from './components/Community'; 
 import PostCreateForm from "./pages/posts/PostCreateForm";
+import PostPage from "./pages/posts/PostPage";
 
 
 
@@ -47,9 +48,10 @@ function App() {
                 <Route path="/resources" element={<Forum />} />
                 <Route path="/community" element={<Community />} />
                 <Route path="/posts/create" element={<PostCreateForm />} />
+                <Route path="/posts/:id" element={<PostPage />} />
                 <Route path="*" element={<p>Page not found!</p>} />
               </Routes>
-            </Container>
+            </Container> 
           </div>
   );
 }
