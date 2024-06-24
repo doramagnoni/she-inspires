@@ -2,23 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from "../styles/Stories.module.css";
-
 import axios from 'axios';
 
-function Stories() {
+function StoriesPreview() {
     const [stories, setStories] = useState([]);
 
     useEffect(() => {
         const fetchStories = async () => {
             try {
-                const response = await axios.get('/stories/');
-                console.log("response", response);
-
-                // Access the 'results' array within the response data
+                const response = await axios.get('/stories/', {
+                    params: {
+                        limit: 3  
+                    }
+                });
                 if (Array.isArray(response.data.results)) {
                     setStories(response.data.results);
                 } else {
-                    console.error("Fetched data results is not an array:", response.data.results);
+                    console.error("Fetched data is not an array:", response.data);
                 }
             } catch (error) {
                 console.error("There was an error fetching the stories!", error);
@@ -28,7 +28,7 @@ function Stories() {
         fetchStories();
     }, []);
 
- return (
+    return (
         <section className={styles['featured-stories']}>
             <Container>
                 <h2 className={styles['section-title']}>Inspiring Stories You'll Love</h2>
@@ -48,8 +48,6 @@ function Stories() {
                         </Col>
                     ))}
                 </Row>
-
-               
                 <div className="text-center mt-4">
                     <Button variant="outline-primary" as={Link} to="/stories">View More Stories</Button>
                 </div>
@@ -58,5 +56,4 @@ function Stories() {
     );
 }
 
-
-export default Stories; 
+export default StoriesPreview;

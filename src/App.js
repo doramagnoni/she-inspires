@@ -12,6 +12,7 @@ import Forum from './components/Forum';
 import Community from './components/Community'; 
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostPage from "./pages/posts/PostPage";
+import axios from 'axios';
 
 
 
@@ -19,15 +20,18 @@ function App() {
 
   const [stories, setStories] = useState([]);
   
-
   useEffect(() => {
-    // placeholder data
-    setStories([
-      { id: 1, title: "Story 1", summary: "Summary of Story 1", image_url: "https://via.placeholder.com/300" },
-      { id: 2, title: "Story 2", summary: "Summary of Story 2", image_url: "https://via.placeholder.com/300" },
-      { id: 3, title: "Story 3", summary: "Summary of Story 3", image_url: "https://via.placeholder.com/300" }
-    ]);
-  }, []); 
+    const fetchStories = async () => {
+      try {
+        const response = await axios.get('/stories/');
+        setStories(response.data);
+      } catch (error) {
+        console.error("There was an error fetching the stories!", error);
+      }
+    };
+
+    fetchStories();
+  }, []);
 
 
   return (
@@ -38,7 +42,7 @@ function App() {
               <Routes>
                 <Route path="/" element={
                   <>
-                    <Hero />
+                    <Hero stories={stories} />
                     <Stories stories={stories} />
                   </>
                 } />

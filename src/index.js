@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>

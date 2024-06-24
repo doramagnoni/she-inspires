@@ -1,9 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import styles from "../styles/Hero.module.css"
+import styles from "../styles/Hero.module.css";
+import StoriesPreview from './StoriesPreview';
 
-function Hero() {
+
+function Hero({ stories }) {
   return (
     <div className={styles.Hero}> 
       <Container>
@@ -15,6 +17,7 @@ function Hero() {
           </Col>
         </Row>
       </Container>
+      {stories && stories.length > 0 && <StoriesPreview stories={stories} />}
     </div>
   );
 }
