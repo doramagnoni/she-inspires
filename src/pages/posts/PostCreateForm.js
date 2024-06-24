@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -7,18 +6,13 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import { Image } from "react-bootstrap";
-
 import Asset from "../../components/Asset";
 import Upload from "../../assets/upload.png";
-
-import styles from "../../styles/PostCreateEditForm.module.css";
+import styles from "../../styles/PostCreateEditForm.module.css"; // Import CSS module
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-
 import { useNavigate } from "react-router-dom";  
 import { axiosReq } from "../../api/axiosDefaults";
-
-
 
 function PostCreateForm() {
   const [errors, setErrors] = useState({});
@@ -90,43 +84,45 @@ function PostCreateForm() {
   const textFields = (
     <div className={`text-center ${styles.textFields}`}>
       <Form.Group>
-        <Form.Label>Title</Form.Label>
+      <Form.Label className={`${styles.customFormLabel}`}>Title</Form.Label>
         <Form.Control
           type="text"
           name="title"
           value={title}
           onChange={handleChange}
+          className={`${styles.customFormControl}`}
         />
       </Form.Group>
       {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+       <Alert variant="warning" className={`${styles.customAlert}`} key={idx}>
           {message}
         </Alert>
       ))}
 
       <Form.Group>
-        <Form.Label>Content</Form.Label>
+      <Form.Label className={`${styles.customFormLabel}`}>Content</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}
           name="content"
           value={content}
           onChange={handleChange}
+          className={`${styles.customFormControl}`}
         />
       </Form.Group>
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert variant="warning" className={`${styles.customAlert}`} key={idx}>
           {message}
         </Alert>
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`}
         onClick={() => navigate(-1)}
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`} type="submit">
         Create
       </Button>
     </div>
@@ -135,35 +131,29 @@ function PostCreateForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-      <Col className={`py-2 p-0 p-md-2 ${styles.leftCol}`} md={7} lg={8}> 
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
+        <Col className={`py-2 p-0 p-md-2 ${styles.leftCol}`} md={7} lg={8}> 
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
             <Form.Group className="text-center">
               {image ? (
                 <>
                   <figure>
-                  <Image className={`${appStyles.Image} ${styles.image}`} src={image} rounded onClick={handleImageClick} style={{ cursor: "pointer" }} />
+                     <Image
+                        className={`${appStyles.Image} ${styles.image}`}
+                        src={image}
+                        rounded
+                        onClick={handleImageClick}
+                        style={{ cursor: "pointer" }}
+                      />
                   </figure>
                   <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
+                    <Form.Label className={`${btnStyles.Button} ${btnStyles.Blue} btn`} htmlFor="image-upload">
                       Change the image
                     </Form.Label>
                   </div>
                 </>
               ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  onClick={handleImageClick}
-                  style={{ cursor: "pointer" }}
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
+                <Form.Label className="d-flex justify-content-center" onClick={handleImageClick} style={{ cursor: "pointer" }}>
+                  <Asset src={Upload} message="Click or tap to upload an image" />
                 </Form.Label>
               )}
               <Form.Group controlId="formFile" className="mb-3">

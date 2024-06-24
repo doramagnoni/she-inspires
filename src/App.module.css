@@ -50,3 +50,14 @@
   max-height: 300px; 
   object-fit: cover;
 }
+
+
+.Image {
+  /* Add styles for the image here */
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  margin-top: 50px;
+}
+
