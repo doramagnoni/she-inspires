@@ -12,11 +12,17 @@ import Forum from './components/Forum';
 import Community from './components/Community'; 
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostPage from "./pages/posts/PostPage";
+import PostsPage from "./pages/posts/PostsPage";
 import axios from 'axios';
+import { useCurrentUser } from "./contexts/CurrentUserContext";
+
 
 
 
 function App() {
+
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
 
   const [stories, setStories] = useState([]);
   
@@ -46,6 +52,9 @@ function App() {
                     <Stories stories={stories} />
                   </>
                 } />
+                <Route path="/" element={<PostsPage message="No results found. Adjust the search keyword." />} />
+                <Route path="/feed" element={<PostsPage message="No results found. Adjust the search keyword or follow a user." filter={`owner__followed__owner__profile=${profile_id}&`} />} />
+                <Route path="/liked" element={<PostsPage message="No results found. Adjust the search keyword or like a post." filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`} />} />
                 <Route path="/signin" element={<SignInForm />} />
                 <Route path="/signup" element={<SignUpForm />} />
                 <Route path="/stories" element={<Stories stories={stories} />} />
