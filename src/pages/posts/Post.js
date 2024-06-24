@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 
@@ -58,19 +58,21 @@ const Post = (props) => {
     }
   };
 
-  return (
+    return (
     <Card className={styles.Post}>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`} className="d-flex align-items-center">
-            <img src={profile_image} alt="profile" height={55} className="mr-2 rounded-circle" />
-            {owner}
-          </Link>
-          <div className="d-flex align-items-center">
+      <Card.Body className={styles.PostBody}>
+      <Row className={`${styles.PostHeader} align-items-center justify-content-between`}>
+          <Col xs="auto">
+          <Link to={`/profiles/${profile_id}`} className={`${styles.ProfileLink} d-flex align-items-center`}>
+          <img src={profile_image} alt="profile" height={55} className={styles.ProfileImage} />
+              {owner}
+            </Link>
+          </Col>
+          <Col xs="auto" className="d-flex align-items-center">
             <span>{updated_at}</span>
             {is_owner && postPage && "..."}
-          </div>
-        </Media>
+          </Col>
+        </Row>
       </Card.Body>
       <Link to={`/posts/${id}`}>
         <Card.Img src={image} alt={title} />
@@ -87,7 +89,7 @@ const Post = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span onClick={handleUnlike}>       
+            <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (

@@ -1,26 +1,49 @@
 
 .Post {
-    background-color: #ffffff;
+    background-color:#FBEAFF;
     border: 1px solid #dadadf;
     border-radius: 2px;
     margin-bottom: 16px;
     text-align: center;
+    max-width: 500px; 
+    margin: 0 auto; 
+    
   }
-  
+
   .Post figure,
   h5 {
     margin: 0 0;
   }
-  
+
+  .Post img {
+    max-width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .ProfileImage {
+    margin-right: 10px;
+    border-radius: 50%;
+
+  }
+  .ProfileLink {
+    display: flex;
+    align-items: center;
+    text-decoration: none; 
+    color: inherit; 
+  }
+
+
   .Heart {
-    color: #f85032;
+    color: red;
   }
   
-  .Heart:hover {
-    color: #2142b2;
+  .HeartOutline {
+    color: grey;
   }
   
   .HeartOutline:hover {
     color: #f85032;
   }
+
+  
   
