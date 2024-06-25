@@ -1,5 +1,5 @@
 
-  /* General form styling */
+ 
 .CommentCreateForm {
     display: flex;
     align-items: center;
@@ -10,7 +10,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Profile Image styling */
+  
   .CommentCreateForm img {
     width: 40px;
     height: 40px;
@@ -19,14 +19,13 @@
     margin-right: 10px;
   }
   
-  /* Input group styling */
   .CommentCreateForm .InputGroup {
     display: flex;
     align-items: center;
     width: 100%;
   }
   
-  /* Textarea styling */
+
   .CommentCreateForm .InputGroup textarea {
     flex-grow: 1;
     border: 1px solid #ddd;
@@ -34,10 +33,10 @@
     border-radius: 5px 0 0 5px;
     font-size: 14px;
     resize: none;
-    margin-right: 5px; /* To remove the double border between textarea and button */
+    margin-right: 5px; 
   }
   
-  /* Button styling */
+  
   .CommentCreateForm .InputGroup button {
     color: white;
     background-color: #be64c8;
