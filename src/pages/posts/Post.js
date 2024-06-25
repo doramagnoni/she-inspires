@@ -61,7 +61,7 @@ const Post = (props) => {
   };
 
     return (
-    <Card className={styles.Post}>
+    <Card className={`${styles.Post}`}>
       <Card.Body className={styles.PostBody}>
       <Row className={`${styles.PostHeader} align-items-center justify-content-between`}>
           <Col xs="auto">

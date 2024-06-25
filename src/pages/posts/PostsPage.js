@@ -45,7 +45,7 @@ function PostsPage({ message, filter = "" }) {
     }, [filter, query, pathname]);
 
   return (
-    <Row className="h-100">
+    <Row className={`h-100 ${styles.PostsContainer}`}>
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles mobile</p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
@@ -66,7 +66,10 @@ function PostsPage({ message, filter = "" }) {
           {posts.results.length ? (
             <InfiniteScroll
               children={posts.results.map((post) => (
-                <Post key={post.id} {...post} setPosts={setPosts} />
+               <div key={post.id} className={styles.PostWrapper}>
+                 <Post key={post.id} {...post} setPosts={setPosts} />
+               </div>
+
               ))}
               dataLength={posts.results.length}
               loader={<Asset spinner />}
