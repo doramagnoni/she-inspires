@@ -135,6 +135,6 @@ const Post = (props) => {
       </Card.Body>
     </Card>
   );
-};
+}
 
 export default Post;
