@@ -25,9 +25,7 @@ const NavBar = () => {
       <Nav.Link as={NavLink} to="/stories" className={styles.NavLink}>
         <i className="fas fa-book-open"></i> Stories
       </Nav.Link>
-      <Nav.Link as={NavLink} to="/forum" className={styles.NavLink}>
-        <i className="fas fa-comments"></i> Forum
-      </Nav.Link>
+    
       <Nav.Link as={NavLink} to="/posts/create" className={styles.NavLink}>
         <i className="fas fa-plus-square"></i> Post
       </Nav.Link>

@@ -32,6 +32,14 @@ function Stories() {
             <Container>
                 <h2 className={styles['section-title']}>Inspiring Stories You'll Love</h2>
                 <Row>
+                    <Col xs={12}>
+                     <p className="text-center py-5">
+                         We're working hard to bring you inspiring stories soon! Stay tuned.
+                     </p>
+                    </Col>
+    
+                </Row>
+                <Row>
                     {stories.map((story) => (
                         <Col key={story.id} xs={12} md={6} lg={4}>
                             <Card className={styles.card}>
@@ -47,9 +55,7 @@ function Stories() {
                         </Col>
                     ))}
                 </Row>
-                <div className="text-center mt-4">
-                    <Button variant="outline-primary" as={Link} to="/stories">View More Stories</Button>
-                </div>
+                
             </Container>
         </section>
     );

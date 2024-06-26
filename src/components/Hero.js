@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from "../styles/Hero.module.css";
-import StoriesPreview from './StoriesPreview';
+
 
 
 function Hero({ stories }) {
@@ -17,7 +17,7 @@ function Hero({ stories }) {
           </Col>
         </Row>
       </Container>
-      {stories && stories.length > 0 && <StoriesPreview stories={stories} />}
+      
     </div>
   );
 }
