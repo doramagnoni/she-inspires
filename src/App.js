@@ -17,6 +17,9 @@ import PostEditForm from "./pages/posts/PostEditForm";
 import axios from 'axios';
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 
 function App() {
@@ -89,6 +92,9 @@ function App() {
           <Route path="/posts/:id" element={<PostPage />} />
           <Route path="/posts/:id/edit" element={<PostEditForm />} />
           <Route path="/profiles/:id" element={<ProfilePage />} />
+          <Route path="/profiles/:id/edit/username" element={<UsernameForm />} />
+          <Route path="/profiles/:id/edit/password" element={<UserPasswordForm />} />
+          <Route path="/profiles/:id/edit" element={<ProfileEditForm />} />
           <Route path="*" element={<p>Page not found!</p>} />
         </Routes>
       </Container>
