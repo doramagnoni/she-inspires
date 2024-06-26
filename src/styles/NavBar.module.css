@@ -13,7 +13,7 @@
 .NavLink {
   color: #333; 
   text-decoration: none;
-  margin-right: 10px; 
+  margin-right: 40px; 
   font-size: 14px; 
   padding: 8px 10px; 
   display: flex;
@@ -27,7 +27,7 @@
 }
 
 .Title {
-  margin-right: 20px; 
+  margin-right: 85px; 
   font-size: 24px; 
   font-weight: 400;
   color: #333; 
