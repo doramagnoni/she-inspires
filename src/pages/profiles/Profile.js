@@ -3,6 +3,7 @@ import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { Image, Button } from "react-bootstrap";
+import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
   const { profile, mobile } = props;
@@ -10,9 +11,9 @@ const Profile = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const { handleFollow, handleUnfollow } = useSetProfileData();
 
   return (
-
     <div className={`${styles.Profile} ${mobile && styles.ProfileMobile}`}>
       <div>
         <Link to={`/profiles/${id}`}>
@@ -32,14 +33,14 @@ const Profile = (props) => {
               following_id ? (
                 <Button
                   className={`${styles.Button} ${styles.BlackOutline}`}
-                  onClick={() => {}}
+                  onClick={() => handleUnfollow(profile)}
                 >
                   Unfollow
                 </Button>
               ) : (
                 <Button
                   className={`${styles.Button} ${styles.Black}`}
-                  onClick={() => {}}
+                  onClick={() => handleFollow(profile)}
                 >
                   Follow
                 </Button>
