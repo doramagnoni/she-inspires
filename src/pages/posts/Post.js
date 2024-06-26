@@ -58,6 +58,7 @@ const Post = (props) => {
     }
   };
 
+  
 
   const handleUnlike = async () => {
     try {
@@ -135,6 +136,6 @@ const Post = (props) => {
       </Card.Body>
     </Card>
   );
-}
+};
 
 export default Post;

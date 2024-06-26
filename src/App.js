@@ -16,8 +16,7 @@ import PostsPage from "./pages/posts/PostsPage";
 import PostEditForm from "./pages/posts/PostEditForm";
 import axios from 'axios';
 import { useCurrentUser } from "./contexts/CurrentUserContext";
-
-
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 
 function App() {
@@ -42,32 +41,58 @@ function App() {
 
 
   return (
+    <div className={styles.App}>
+      <NavBar />
+      <Container className={styles.Main}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero stories={stories} />
+                <Stories stories={stories} />
+              </>
+            }
+          />
 
-          <div className={styles.App}>
-            <NavBar />
-            <Container className={styles.Main}>
-              <Routes>
-                <Route path="/" element={
-                  <>
-                    <Hero stories={stories} />
-                    <Stories stories={stories} />
-                  </>
-                } />
-                <Route path="/" element={<PostsPage message="No results found. Adjust the search keyword." />} />
-                <Route path="/feed" element={<PostsPage message="No results found. Adjust the search keyword or follow a user." filter={`owner__followed__owner__profile=${profile_id}&`} />} />
-                <Route path="/liked" element={<PostsPage message="No results found. Adjust the search keyword or like a post." filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`} />} />
-                <Route path="/signin" element={<SignInForm />} />
-                <Route path="/signup" element={<SignUpForm />} />
-                <Route path="/stories" element={<Stories stories={stories} />} />
-                <Route path="/resources" element={<Forum />} />
-                <Route path="/community" element={<Community />} />
-                <Route path="/posts/create" element={<PostCreateForm />} />
-                <Route path="/posts/:id" element={<PostPage />} />
-                <Route path="/posts/:id/edit" element={<PostEditForm />} />
-                <Route path="*" element={<p>Page not found!</p>} />
-              </Routes>
-            </Container> 
-          </div>
+          <Route
+            path="/"
+            element={<PostsPage message="No results found. Adjust the search keyword." />}
+          />
+
+          <Route
+            path="/feed"
+            element={
+              <PostsPage
+                message="No results found. Adjust the search keyword or follow a user."
+                filter={`owner__followed__owner__profile=${profile_id}&`}
+              />
+            }
+          />
+
+          <Route
+            path="/liked"
+            element={
+              <PostsPage
+                message="No results found. Adjust the search keyword or like a post."
+                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+              />
+            }
+          />
+
+          <Route path="/signin" element={<SignInForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/stories" element={<Stories stories={stories} />} />
+          <Route path="/resources" element={<Forum />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/posts/create" element={<PostCreateForm />} />
+          <Route path="/posts/:id" element={<PostPage />} />
+          <Route path="/posts/:id/edit" element={<PostEditForm />} />
+          <Route path="/profiles/:id" element={<ProfilePage />} />
+          <Route path="*" element={<p>Page not found!</p>} />
+        </Routes>
+      </Container>
+    </div>
   );
 }
 
