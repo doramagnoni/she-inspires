@@ -44,6 +44,14 @@
   }
   
   .BlackOutline:hover {
-    background-color: #343a40;
+    background-color: #23aa94;
     color: #ffffff;
+    
   }
+
+  .noUnderline {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  

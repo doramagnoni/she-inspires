@@ -2,12 +2,13 @@ import React from "react";
 import styles from "../../styles/Profile.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
-import { Image, Button } from "react-bootstrap";
+import AvatarComponent from "../../components/Avatar";
+import { Button } from "react-bootstrap";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
   const { profile, mobile } = props;
-  const { id, following_id, image, owner } = profile;
+  const { id, following_id, owner } = profile;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -16,17 +17,13 @@ const Profile = (props) => {
   return (
     <div className={`${styles.Profile} ${mobile && styles.ProfileMobile}`}>
       <div>
-        <Link to={`/profiles/${id}`}>
-          <Image
-            className={`${styles.ProfileImage}`}
-            roundedCircle
-            src={image}
-            alt={`${owner}'s profile picture`}
-          />
-        </Link>
+      <Link className={styles.noUnderline} to={`/profiles/${id}`}>
+      <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} /> 
+      </Link>
+        
       </div>
       <div className={`${styles.WordBreak}`}>
-        <strong>{owner}</strong>
+        
         {!mobile && (
           <div className={`${styles.ButtonContainer}`}>
             {currentUser && !is_owner && (

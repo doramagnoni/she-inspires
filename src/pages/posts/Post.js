@@ -3,6 +3,7 @@ import styles from "../../styles/Post.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import AvatarComponent from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -12,7 +13,6 @@ const Post = (props) => {
     id,
     owner,
     profile_id,
-    profile_image,
     comments_count,
     likes_count,
     like_id,
@@ -80,21 +80,23 @@ const Post = (props) => {
     <Card className={`${styles.Post}`}>
       <Card.Body className={styles.PostBody}>
       <Row className={`${styles.PostHeader} align-items-center justify-content-between`}>
-          <Col xs="auto">
-          <Link to={`/profiles/${profile_id}`} className={`${styles.ProfileLink} d-flex align-items-center`}>
-          <img src={profile_image} alt="profile" height={55} className={styles.ProfileImage} />
-              {owner}
-            </Link>
-          </Col>
+        <Col xs="auto">
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
-            {is_owner && postPage && (
-              <MoreDropdown
-                handleEdit={handleEdit}
-                handleDelete={handleDelete}
-              />
+           <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
+               <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} /> 
+           </Link>
+           <span className="mx-2">•</span> 
+           <span className="ml-2 text-muted">{updated_at}</span>
+           
+           {is_owner && postPage && (
+              <Col xs="auto" className="d-flex justify-content-end">
+                <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+              </Col>
             )}
           </div>
+          
+        </Col>
+   
         </Row>
       </Card.Body>
       <Link to={`/posts/${id}`}>

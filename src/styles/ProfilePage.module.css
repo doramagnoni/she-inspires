@@ -1,8 +1,14 @@
-.ProfileImage {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-  }
+.avatarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  height: 45px;
+  width: 45px;
+  background-color: #ccc; /* Fallback background color */
+  font-size: 1.5rem; /* Adjust font size for initials */
+}
   
   .UserPosts {
     background-color: #f8f9fa;

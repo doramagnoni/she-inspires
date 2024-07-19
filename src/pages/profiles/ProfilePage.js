@@ -10,6 +10,7 @@ import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams, Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+
 import {
   useProfileData,
   useSetProfileData,
@@ -19,6 +20,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import AvatarComponent from "../../components/Avatar";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -56,13 +58,12 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
       <Row nogutters="true" className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
-          <Image
-            className={styles.ProfileImage}
-            roundedCircle
-            src={profile?.image}
+          <AvatarComponent
+            src={currentUser?.profile_image}
+            text={currentUser?.username}
+            showInitialOnly={true}
           />
         </Col>
         <Col lg={6}>
@@ -83,6 +84,7 @@ function ProfilePage() {
           </Row>
         </Col>
         <Col lg={3} className="text-lg-right">
+          {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (

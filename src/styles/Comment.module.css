@@ -39,3 +39,12 @@
     margin-bottom: auto;
   }
   
+  .noUnderline {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .noUnderline:hover {
+    text-decoration: none;
+    
+  }

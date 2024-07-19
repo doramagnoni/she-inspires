@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+import AvatarComponent from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import styles from "../../styles/Comment.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -48,12 +48,12 @@ const Comment = (props) => {
     <div className={styles.Comment}>
       <hr />
       <div className={styles.CommentBody}>
-        <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_image} />
+        <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
+           <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} /> 
         </Link>
         <div className={styles.CommentContent}>
           <div className={styles.CommentHeader}>
-            <span className={styles.Owner}>{owner}</span>
+            
             <span className={styles.Date}>{updated_at}</span>
           </div>
           {showEditForm ? (

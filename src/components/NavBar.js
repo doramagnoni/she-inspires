@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import axios from "axios";
+import AvatarComponent from "./Avatar";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -15,6 +17,7 @@ const NavBar = () => {
     try {
       await axios.post("dj-rest-auth/logout/");
       setCurrentUser(null);
+      
     } catch (err) {
       console.log(err);
     }
@@ -36,21 +39,17 @@ const NavBar = () => {
         <i className="fas fa-heart"></i> Liked
       </Nav.Link>
 
-      <Nav.Link
-        as={NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
-        className={`${styles.NavLink} ${styles.ProfileLink}`}
-      >
-        {currentUser?.username}
-        <img
-          src={currentUser?.profile_image}
-          alt="Profile"
-          className={styles.ProfileImage}
-        />
-      </Nav.Link>
       <Nav.Link as={NavLink} to="/" onClick={handleSignOut} className={styles.NavLink}>
         <i className="fas fa-sign-out-alt"></i> Sign out
       </Nav.Link>
+      
+      <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={40} />
+      </NavLink>
+      
     </>
   );
 

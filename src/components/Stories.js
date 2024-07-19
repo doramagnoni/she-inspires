@@ -33,9 +33,7 @@ function Stories() {
                 <h2 className={styles['section-title']}>Inspiring Stories You'll Love</h2>
                 <Row>
                     <Col xs={12}>
-                     <p className="text-center py-5">
-                         We're working hard to bring you inspiring stories soon! Stay tuned.
-                     </p>
+                    
                     </Col>
     
                 </Row>

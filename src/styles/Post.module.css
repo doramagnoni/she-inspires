@@ -23,13 +23,18 @@
   .ProfileImage {
     margin-right: 10px;
     border-radius: 50%;
+    text-decoration: none;
 
   }
-  .ProfileLink {
-    display: flex;
-    align-items: center;
-    text-decoration: none; 
-    color: inherit; 
+  
+  .noUnderline {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .noUnderline:hover {
+    text-decoration: none;
+    color: #23aa94;
   }
 
 

@@ -1,57 +1,39 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Form, Button, Row, Col, Container, Alert, Image } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-
 import { axiosReq } from "../../api/axiosDefaults";
-import {
-  useCurrentUser,
-  useSetCurrentUser,
-} from "../../contexts/CurrentUserContext";
 
-import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
 
-const ProfileEditForm = () => {
-  const currentUser = useCurrentUser();
-  const setCurrentUser = useSetCurrentUser();
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const imageFile = useRef();
-
-  const [profileData, setProfileData] = useState({
-    name: "",
-    content: "",
-    image: "",
-  });
-  const { name, content, image } = profileData;
-
+function ProfileEditForm() {
   const [errors, setErrors] = useState({});
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [profileData, setProfileData] = useState({
+    fullName: "",
+    username: "",
+    bio: "",
+    profilePicURL: "",
+  });
+
+  const { fullName, username, bio, profilePicURL } = profileData;
+  const imageInput = useRef(null);
+  const navigate = useNavigate();
+  const { id } = useParams(); // assuming user ID is passed as URL param
 
   useEffect(() => {
-    const handleMount = async () => {
-      if (currentUser?.profile_id?.toString() === id) {
-        try {
-          const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
-        } catch (err) {
-          console.log(err);
-          navigate("/");
-        }
-      } else {
-        navigate("/");
+    const fetchProfileData = async () => {
+      try {
+        const { data } = await axiosReq.get(`/users/${id}/`);
+        setProfileData(data);
+      } catch (err) {
+        console.log(err);
       }
     };
 
-    handleMount();
-  }, [currentUser, navigate, id]);
+    fetchProfileData();
+  }, [id, navigate]);
 
   const handleChange = (event) => {
     setProfileData({
@@ -60,47 +42,92 @@ const ProfileEditForm = () => {
     });
   };
 
+  const handleChangeImage = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(profilePicURL);
+      setProfileData({
+        ...profileData,
+        profilePicURL: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("content", content);
+    if (isUpdating) return;
+    setIsUpdating(true);
 
-    if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("username", username);
+    formData.append("bio", bio);
+
+    if (imageInput.current?.files[0]) {
+      formData.append("profilePicURL", imageInput.current.files[0]);
     }
 
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
-      setCurrentUser((currentUser) => ({
-        ...currentUser,
-        profile_image: data.image,
-      }));
-      navigate(-1);
-    } catch (err) {
-      console.log(err);
-      setErrors(err.response?.data);
+      const { data } = await axiosReq.put(`/users/${id}/`, formData);
+      localStorage.setItem("user-info", JSON.stringify(data));
+      setIsUpdating(false);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      if (error.response?.status !== 401) {
+        setErrors(error.response?.data);
+      }
+      setIsUpdating(false);
     }
   };
 
   const textFields = (
-    <>
+    <div className="text-center">
       <Form.Group>
-        <Form.Label>Bio</Form.Label>
+        <Form.Label>Full Name</Form.Label>
         <Form.Control
-          as="textarea"
-          value={content}
+          type="text"
+          name="fullName"
+          value={fullName}
           onChange={handleChange}
-          name="content"
-          rows={7}
         />
       </Form.Group>
-
-      {errors?.content?.map((message, idx) => (
+      {errors?.fullName?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
+
+      <Form.Group>
+        <Form.Label>Username</Form.Label>
+        <Form.Control
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.username?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Bio</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={6}
+          name="bio"
+          value={bio}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.bio?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => navigate(-1)}
@@ -110,56 +137,51 @@ const ProfileEditForm = () => {
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         save
       </Button>
-    </>
+    </div>
   );
 
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
-          <Container className={appStyles.Content}>
-            <Form.Group>
-              {image && (
-                <figure>
-                  <Image src={image} fluid />
-                </figure>
-              )}
-              {errors?.image?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
+        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+          <Container
+            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+          >
+            <Form.Group className="text-center">
+              <figure>
+                <Image className={appStyles.Image} src={profilePicURL} rounded />
+              </figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
+                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="image-upload"
                 >
                   Change the image
                 </Form.Label>
               </div>
+
               <Form.File
                 id="image-upload"
-                ref={imageFile}
                 accept="image/*"
-                onChange={(e) => {
-                  if (e.target.files.length) {
-                    setProfileData({
-                      ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
-                    });
-                  }
-                }}
+                onChange={handleChangeImage}
+                ref={imageInput}
               />
             </Form.Group>
+            {errors?.profilePicURL?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
+        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
     </Form>
   );
-};
+}
 
 export default ProfileEditForm;
