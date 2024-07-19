@@ -16,7 +16,7 @@
   }
   
   .ButtonContainer {
-    margin-top: 10px;
+    margin-top: 0px;
   }
   
   .Button {
@@ -26,6 +26,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 10px;
   }
   
   .Black {
@@ -46,7 +47,7 @@
   .BlackOutline:hover {
     background-color: #23aa94;
     color: #ffffff;
-    
+    border: 1px solid #343a40;
   }
 
   .noUnderline {

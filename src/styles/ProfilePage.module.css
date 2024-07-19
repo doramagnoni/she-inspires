@@ -1,13 +1,10 @@
-.avatarContainer {
-  display: flex;
-  align-items: center;
-}
+
 
 .avatar {
   height: 45px;
   width: 45px;
-  background-color: #ccc; /* Fallback background color */
-  font-size: 1.5rem; /* Adjust font size for initials */
+  background-color: #ccc; 
+  font-size: 1.5rem; 
 }
   
   .UserPosts {
