@@ -1,6 +1,12 @@
 
 .featured-stories {
     padding: 50px 0; 
+    background-color: #B0A9B2;
+    border-radius: 2%;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.215);
+    padding-left: 50px;
+    padding-right: 50px;
+    
   }
   
   .featured-stories h2 {
@@ -12,16 +18,19 @@
   .card {
     margin-bottom: 30px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
+
   
   .card:hover {
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Scale the card to 105% on hover */
   }
   
   .card-img-top {
     object-fit: cover;
-    height: 200px; 
+    height: 400px; 
+    
   }
   
   .card-title {
@@ -34,7 +43,7 @@
   }
   
   .btn-read-more {
-    background-color: #c264e5;
+    background-color: #363137;
     color: white;
     border: none;
     transition: background-color 0.3s, transform 0.3s;

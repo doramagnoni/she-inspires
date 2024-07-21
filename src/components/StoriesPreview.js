@@ -27,6 +27,7 @@ function StoriesPreview() {
     }, []);
 
     return (
+        
         <section className={styles['featured-stories']}>
             <Container>
                 <h2 className={styles['section-title']}>Inspiring Stories You'll Love</h2>
