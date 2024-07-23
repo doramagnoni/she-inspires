@@ -30,9 +30,8 @@ const PopularProfiles = ({ mobile }) => {
         mobile && "d-lg-none text-center mb-3"
       }`}
     >
-      {currentUserProfile && (
+      {!mobile && currentUserProfile && (
         <>
-        
           <Profile profile={currentUserProfile} />
           <hr />
         </>
