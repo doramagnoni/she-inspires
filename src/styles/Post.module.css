@@ -1,13 +1,11 @@
 
 .Post {
-    background-color:#FBEAFF;
-    border: 1px solid #dadadf;
     border-radius: 10px;
     margin-bottom: 16px;
     text-align: center;
     max-width: 500px; 
     margin: 0 auto; 
-    
+    padding: 2px; 
   }
 
   .Post figure,
@@ -16,7 +14,7 @@
   }
 
   .Post img {
-    max-width: 100%;
+    max-width: 95%;
     border-bottom: 1px solid #ddd;
   }
 

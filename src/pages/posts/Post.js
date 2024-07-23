@@ -7,7 +7,6 @@ import AvatarComponent from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
-
 const Post = (props) => {
   const {
     id,
@@ -33,14 +32,15 @@ const Post = (props) => {
   };
 
   const handleDelete = async () => {
-    try {
-      await axiosRes.delete(`/posts/${id}/`);
-      navigate(-1);
-    } catch (err) {
-      console.log(err);
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      try {
+        await axiosRes.delete(`/posts/${id}/`);
+        navigate(-1);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
-
 
   const handleLike = async () => {
     try {
@@ -58,8 +58,6 @@ const Post = (props) => {
     }
   };
 
-  
-
   const handleUnlike = async () => {
     try {
       await axiosRes.delete(`/likes/${like_id}/`);
@@ -76,27 +74,24 @@ const Post = (props) => {
     }
   };
 
-    return (
+  return (
     <Card className={`${styles.Post}`}>
       <Card.Body className={styles.PostBody}>
-      <Row className={`${styles.PostHeader} align-items-center justify-content-between`}>
-        <Col xs="auto">
-          <div className="d-flex align-items-center">
-           <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
-               <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} /> 
-           </Link>
-           <span className="mx-2">•</span> 
-           <span className="ml-2 text-muted">{updated_at}</span>
-           
-           {is_owner && postPage && (
-              <Col xs="auto" className="d-flex justify-content-end">
-                <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
-              </Col>
-            )}
-          </div>
-          
-        </Col>
-   
+        <Row className={`${styles.PostHeader} align-items-center justify-content-between`}>
+          <Col xs="auto">
+            <div className="d-flex align-items-center">
+              <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
+                <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} />
+              </Link>
+              <span className="mx-2">•</span>
+              <span className="ml-2 text-muted">{updated_at}</span>
+              {is_owner && postPage && (
+                <Col xs="auto" className="d-flex justify-content-end">
+                  <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+                </Col>
+              )}
+            </div>
+          </Col>
         </Row>
       </Card.Body>
       <Link to={`/posts/${id}`}>
@@ -130,9 +125,18 @@ const Post = (props) => {
             </OverlayTrigger>
           )}
           {likes_count}
-          <Link to={`/posts/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
+          {currentUser ? (
+            <Link to={`/posts/${id}`}>
+              <i className="far fa-comments" />
+            </Link>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to comment on posts!</Tooltip>}
+            >
+              <i className="far fa-comments" />
+            </OverlayTrigger>
+          )}
           {comments_count}
         </div>
       </Card.Body>
