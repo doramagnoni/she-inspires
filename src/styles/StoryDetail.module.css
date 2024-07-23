@@ -1,0 +1,25 @@
+.story-detail {
+    padding: 20px;
+    margin-top: 10px;
+  }
+    
+  .card-img-top {
+  object-fit: contain; 
+  height: 450px; 
+  width: 100%;
+  background-color: #FBEAFF;
+  }
+  
+  .card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333; 
+    margin-bottom: 15px; 
+  }
+  
+  .card-text {
+    font-size: 1.2rem;
+    color: #666; 
+    margin-bottom: 20px; 
+  }
+  

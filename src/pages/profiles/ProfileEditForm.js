@@ -20,7 +20,7 @@ function ProfileEditForm() {
   const { fullName, username, bio, profilePicURL } = profileData;
   const imageInput = useRef(null);
   const navigate = useNavigate();
-  const { id } = useParams(); // assuming user ID is passed as URL param
+  const { id } = useParams(); 
 
   useEffect(() => {
     const fetchProfileData = async () => {

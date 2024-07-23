@@ -9,6 +9,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 
 import Stories from './components/Stories';
+import StoryDetail from './components/StoryDetail';
 import Hero from './components/Hero';
 
 import PostCreateForm from "./pages/posts/PostCreateForm";
@@ -67,6 +68,7 @@ function App() {
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/stories" element={<Stories />} />
+          <Route path="/stories/:id" element={<StoryDetail />} />
           <Route path="/posts/create" element={<PostCreateForm />} />
           <Route path="/posts/:id" element={<PostPage />} />
           <Route path="/posts/:id/edit" element={<PostEditForm />} />
