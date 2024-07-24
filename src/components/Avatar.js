@@ -8,10 +8,13 @@ const AvatarComponent = ({ src, height = 45, text, showInitialOnly = false }) =>
   
   return (
     <span className="d-flex align-items-center">
-        <Avatar className={styles.Avatar} style={{ height: height, width: height }}>
-          {displayInitial}
-        </Avatar>
-        {!showInitialOnly && text && <span className="ml-2">{text}</span>}
+      <Avatar
+        className={styles.Avatar}
+        style={{ height: height, width: height, fontSize: height * 0.4 }}
+      >
+        {displayInitial}
+      </Avatar>
+      {!showInitialOnly && text && <span className="ml-2">{text}</span>}
     </span>
   );
 };

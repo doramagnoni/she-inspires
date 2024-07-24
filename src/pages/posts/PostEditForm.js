@@ -1,14 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Form, Button, Row, Col, Container, Alert, Image } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
+import Image from "react-bootstrap/Image";
 
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
+import { useNavigate, useParams } from "react-router-dom";
+import { axiosReq } from "../../api/axiosDefaults";
+
 function PostEditForm() {
   const [errors, setErrors] = useState({});
+
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -21,50 +29,45 @@ function PostEditForm() {
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchPostData = async () => {
+    const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         const { title, content, image, is_owner } = data;
 
-        if (is_owner) {
-          setPostData({ title, content, image });
-        } else {
-          navigate("/");
-        }
+        is_owner ? setPostData({ title, content, image }) : navigate("/");
       } catch (err) {
         console.log(err);
       }
     };
 
-    fetchPostData();
-  }, [id, navigate]);
+    handleMount();
+  }, [navigate, id]);
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    setPostData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setPostData({
+      ...postData,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setPostData((prevData) => ({
-        ...prevData,
+      setPostData({
+        ...postData,
         image: URL.createObjectURL(event.target.files[0]),
-      }));
+      });
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const formData = new FormData();
+
     formData.append("title", title);
     formData.append("content", content);
 
-    if (imageInput.current?.files[0]) {
+    if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
     }
 
@@ -116,10 +119,10 @@ function PostEditForm() {
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => navigate(-1)}
       >
-        Cancel
+        cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        Save
+        save
       </Button>
     </div>
   );

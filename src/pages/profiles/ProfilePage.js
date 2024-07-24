@@ -6,7 +6,6 @@ import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams, Link } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -58,32 +57,35 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      <Row nogutters="true" className="px-3 text-center">
+      <Row className={styles.ProfileMain}>
         <Col lg={3} className="text-lg-left">
-          <AvatarComponent
-            src={currentUser?.profile_image}
-            text={currentUser?.username}
-            showInitialOnly={true}
-          />
+          <div className={styles.AvatarWrapper}>
+            <AvatarComponent
+              src={currentUser?.profile_image}
+              text={currentUser?.username}
+              showInitialOnly={true}
+              height={120} 
+            />
+          </div>
         </Col>
-        <Col lg={6}>
+        <Col lg={6} className={styles.ProfileDetails}>
           <h3 className="m-2">{profile?.owner}</h3>
-          <Row className="justify-content-center no-gutters">
-            <Col xs={3} className="my-2">
+          <Row className={`${styles.ProfileStats} justify-content-center no-gutters`}>
+            <Col xs={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.posts_count}</div>
               <div>posts</div>
             </Col>
-            <Col xs={3} className="my-2">
+            <Col xs={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.followers_count}</div>
               <div>followers</div>
             </Col>
-            <Col xs={3} className="my-2">
+            <Col xs={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.following_count}</div>
               <div>following</div>
             </Col>
           </Row>
         </Col>
-        <Col lg={3} className="text-lg-right">
+        <Col lg={3} className={styles.ProfileActions}>
           {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
           {currentUser &&
             !is_owner &&
@@ -103,8 +105,12 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
       </Row>
+      {profile?.content && (
+        <Row>
+          <Col className={styles.ProfileContent}>{profile.content}</Col>
+        </Row>
+      )}
     </>
   );
 
@@ -139,8 +145,7 @@ function ProfilePage() {
 
   return (
     <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
+      <Col className="py-2 p-0 p-lg-2" lg={12}>
         <Container className={appStyles.Content}>
           {hasLoaded ? (
             <>
@@ -151,9 +156,6 @@ function ProfilePage() {
             <Asset spinner />
           )}
         </Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
       </Col>
     </Row>
   );

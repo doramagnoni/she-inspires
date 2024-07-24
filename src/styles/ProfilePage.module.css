@@ -1,26 +1,53 @@
-
-
-.avatar {
-  height: 45px;
-  width: 45px;
-  background-color: #ccc; 
-  font-size: 1.5rem; 
+.ProfileDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 20px;
 }
-  
-  .UserPosts {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .UserPostsHeader {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  
- 
-  
-  
+
+.ProfileStats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.ProfileStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.ProfileMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+}
+
+.ProfileActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.AvatarWrapper {
+  height: 150px; 
+  width: 150px;  
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.AvatarImage {
+  height: 200%;
+  width: 100%;
+  object-fit: cover;
+}
+
