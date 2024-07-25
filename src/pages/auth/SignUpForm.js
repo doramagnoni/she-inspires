@@ -1,13 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
-import axios from "axios";
 import validator from 'validator';
 import IrisImage from '../../assets/iris.JPG';
-
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -26,14 +25,13 @@ const SignUpForm = () => {
       ...signUpData,
       [event.target.name]: event.target.value,
     });
-  
-   
+
     if (event.target.name === 'password1') {
       const passwordErrors = [];
       if (!validator.isLength(event.target.value, { min: 8 })) {
         passwordErrors.push('Password must be at least 8 characters long.');
       }
-    
+
       if (!validator.isStrongPassword(event.target.value, {
         minLength: 8,
         minLowercase: 1,
@@ -43,7 +41,7 @@ const SignUpForm = () => {
       })) {
         passwordErrors.push('Password must contain at least one uppercase letter, lowercase letter, number, and symbol.');
       }
-      
+
       setErrors((prevErrors) => ({
         ...prevErrors,
         password1: passwordErrors.length > 0 ? passwordErrors : null,
@@ -57,15 +55,12 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (event) => {
-    console.log("Form submitted!");
     event.preventDefault();
     if (password1 !== password2) {
         setErrors({ password2: ["Passwords don't match"]});
         return; 
     }
-  
-    console.log("Sending data:", signUpData);
-  
+
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       navigate("/signin");
@@ -73,43 +68,43 @@ const SignUpForm = () => {
         console.error("Error during request:", error.response.data);
         setErrors({}); 
         setGeneralError("An unexpected error occurred. Please try again.");
-        console.error("Error during request:", error.response); // Log error response
+        console.error("Error during request:", error.response);
     }
   };
 
   return (
     <Row className={styles.Row}>
-      <Col className="my-auto py-2 p-md-2" md={6}>
-      <Container className={`${appStyles.Content} ${styles.FormContainer} p-4 `}>
+      <Col className="my-auto p-0 p-md-2" md={6}>
+        <Container className={`${appStyles.Content} p-4 ${styles.FormContainer}`}>
           <h1 className={styles.Header}>Sign up</h1>
 
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
-              <Form.Label className="d-none">username</Form.Label>
+              <Form.Label>Username</Form.Label>
               <Form.Control
-                className={styles.Input}
                 type="text"
-                placeholder="Username"
+                placeholder="Enter username"
                 name="username"
                 value={username}
                 onChange={handleChange}
+                isInvalid={!!errors.username}
               />
+              {errors.username?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
-            {errors.username?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
 
             <Form.Group controlId="password1">
-              <Form.Label className="d-none">Password</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
-                className={styles.Input}
                 type="password"
                 placeholder="Password"
                 name="password1"
                 value={password1}
                 onChange={handleChange}
+                isInvalid={!!errors.password1}
               />
               {errors.password1?.length > 0 && (
                 errors.password1.map((message, idx) => (
@@ -121,49 +116,47 @@ const SignUpForm = () => {
             </Form.Group>
 
             <Form.Group controlId="password2">
-              <Form.Label className="d-none">Confirm password</Form.Label>
+              <Form.Label>Confirm Password</Form.Label>
               <Form.Control
-                className={styles.Input}
                 type="password"
                 placeholder="Confirm password"
                 name="password2"
                 value={password2}
                 onChange={handleChange}
+                isInvalid={!!errors.password2}
               />
+              {errors.password2?.map((message, idx) => (
+                <Alert key={idx} variant="warning">
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
-            {errors.password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
 
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
+              style={{ marginTop: '1rem' }} 
             >
               Sign up
             </Button>
 
-           
-           {generalError && (
+            {generalError && (
               <Alert variant="danger" className="mt-3">
                 {generalError}
               </Alert>
-            )} 
+            )}
           </Form>
         </Container>
 
-        <Container className={`mt-3 ${appStyles.Content}`}>
+        <Container className={`mt-3 ${appStyles.Content} ${styles.LinkContainer}`}>
           <Link className={styles.Link} to="/signin">
             Already have an account? <span>Sign in</span>
           </Link>
         </Container>
       </Col>
-
       <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
-       <img src={IrisImage} alt="Iris" className="img-fluid" />
+        <img src={IrisImage} alt="Iris" className={`img-fluid ${styles.IrisImage}`} />
       </Col>
-     
     </Row>
   );
 };

@@ -6,9 +6,7 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import PansiesImage from '../../assets/pansies.JPG';
-
-
+import PansiesImage from "../../assets/pansies.JPG";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
@@ -44,18 +42,18 @@ function SignInForm() {
   return (
     <Row className={styles.Row}>
       <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4`}>
+<Container className={`${appStyles.Content} p-4 mt-3 mt-md-5 ${styles.FormContainer}`}>
           <h1 className={styles.Header}>Sign in</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
-              <Form.Label>Username</Form.Label> 
+              <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter username"
                 name="username"
                 value={username}
                 onChange={handleChange}
-                isInvalid={!!errors.username} 
+                isInvalid={!!errors.username}
               />
               {errors.username?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
@@ -72,9 +70,9 @@ function SignInForm() {
                 name="password"
                 value={password}
                 onChange={handleChange}
-                isInvalid={!!errors.password} 
+                isInvalid={!!errors.password}
               />
-               {errors.password?.map((message, idx) => (
+              {errors.password?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                   {message}
                 </Alert>
@@ -91,23 +89,23 @@ function SignInForm() {
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
+              style={{ marginTop: '1rem' }} 
             >
               Sign in
             </Button>
           </Form>
         </Container>
-        <Container className={`mt-3 ${appStyles.Content}`}>
+        <Container className={`mt-3 ${appStyles.Content} ${styles.LinkContainer}`}>
           <Link className={styles.Link} to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
       </Col>
       <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
-       <img src={PansiesImage} alt="Pansies" className="img-fluid" />
+        <img src={PansiesImage} alt="Pansies" className={`img-fluid ${styles.PansiesImage}`} />
       </Col>
     </Row>
   );
 }
-
 
 export default SignInForm;
