@@ -1,23 +1,22 @@
 
-.customFileInput {
-  display: inline-block;
-  padding: 8px;
-  border: 1px solid #ccc; /* Same as form control border */
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #f8f9fa; /* Example background color */
-  color: #333; /* Example text color */
+.Container {
+  background-color: #FBEAFF;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+  .d-md-none {
+    display: block !important;
+  }
 }
 
 .customFileInput input[type="file"] {
   display: none;
 }
-
-
-.textFields {
-  margin-bottom: 20px;
-}
-
 
 .customFormLabel {
   font-weight: bold;
@@ -28,19 +27,20 @@
 
 .customFormControl {
   border: 1px solid #ccc; 
+  background-color: #FBEAFF;
   padding: 8px;
   border-radius: 4px;
   width: 100%;
   margin-bottom: 10px;
 }
 
-/* Custom styles for buttons */
+
 .customButton {
   margin-right: 10px;
   margin-top: 10px;
+  background-color: #4D8076;
 }
 
-
-.customAlert {
-  margin-bottom: 10px;
+.customButton:hover {
+  background-color: #23aa94;;
 }
