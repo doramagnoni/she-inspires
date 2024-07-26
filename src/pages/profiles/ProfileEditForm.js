@@ -1,39 +1,42 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Form, Button, Row, Col, Container, Alert, Image } from "react-bootstrap";
+import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
-
-import styles from "../../styles/PostCreateEditForm.module.css";
+import Asset from "../../components/Asset";
+import styles from "../../styles/ProfilePage.module.css"; 
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import AvatarComponent from "../../components/Avatar";
 
 function ProfileEditForm() {
   const [errors, setErrors] = useState({});
-  const [isUpdating, setIsUpdating] = useState(false);
   const [profileData, setProfileData] = useState({
-    fullName: "",
     username: "",
-    bio: "",
-    profilePicURL: "",
+    content: "",
+    image: "",
   });
+  const { username, content, image } = profileData;
 
-  const { fullName, username, bio, profilePicURL } = profileData;
   const imageInput = useRef(null);
   const navigate = useNavigate();
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   useEffect(() => {
-    const fetchProfileData = async () => {
+    const fetchProfile = async () => {
       try {
-        const { data } = await axiosReq.get(`/users/${id}/`);
-        setProfileData(data);
+        const { data } = await axiosReq.get(`/profiles/${id}/`);
+        setProfileData({
+          username: data.owner,
+          content: data.content,
+          image: data.image,
+        });
       } catch (err) {
         console.log(err);
       }
     };
 
-    fetchProfileData();
-  }, [id, navigate]);
+    fetchProfile();
+  }, [id]);
 
   const handleChange = (event) => {
     setProfileData({
@@ -44,98 +47,83 @@ function ProfileEditForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(profilePicURL);
+      URL.revokeObjectURL(image);
       setProfileData({
         ...profileData,
-        profilePicURL: URL.createObjectURL(event.target.files[0]),
+        image: URL.createObjectURL(event.target.files[0]),
       });
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (isUpdating) return;
-    setIsUpdating(true);
 
     const formData = new FormData();
-    formData.append("fullName", fullName);
     formData.append("username", username);
-    formData.append("bio", bio);
+    formData.append("content", content);
 
-    if (imageInput.current?.files[0]) {
-      formData.append("profilePicURL", imageInput.current.files[0]);
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
     }
 
     try {
-      const { data } = await axiosReq.put(`/users/${id}/`, formData);
-      localStorage.setItem("user-info", JSON.stringify(data));
-      setIsUpdating(false);
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      if (error.response?.status !== 401) {
-        setErrors(error.response?.data);
+      await axiosReq.put(`/profiles/${id}/`, formData);
+      navigate(`/profiles/${id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
       }
-      setIsUpdating(false);
     }
   };
 
-  const textFields = (
-    <div className="text-center">
-      <Form.Group>
-        <Form.Label>Full Name</Form.Label>
-        <Form.Control
-          type="text"
-          name="fullName"
-          value={fullName}
-          onChange={handleChange}
-        />
-      </Form.Group>
-      {errors?.fullName?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
+  const handleImageClick = () => {
+    imageInput.current.click();
+  };
 
+  const textFields = (
+    <div className={`text-center ${styles.textFields}`}>
       <Form.Group>
-        <Form.Label>Username</Form.Label>
+        <Form.Label className={`${styles.customFormLabel}`}>Username</Form.Label>
         <Form.Control
           type="text"
           name="username"
           value={username}
           onChange={handleChange}
+          className={`${styles.customFormControl}`}
         />
       </Form.Group>
       {errors?.username?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+        <Alert variant="warning" className={`${styles.customAlert}`} key={idx}>
           {message}
         </Alert>
       ))}
 
       <Form.Group>
-        <Form.Label>Bio</Form.Label>
+        <Form.Label className={`${styles.customFormLabel}`}>Content</Form.Label>
         <Form.Control
           as="textarea"
           rows={6}
-          name="bio"
-          value={bio}
+          name="content"
+          value={content}
           onChange={handleChange}
+          className={`${styles.customFormControl}`}
         />
       </Form.Group>
-      {errors?.bio?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" className={`${styles.customAlert}`} key={idx}>
           {message}
         </Alert>
       ))}
 
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`}
         onClick={() => navigate(-1)}
       >
-        cancel
+        Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save
+      <Button className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`} type="submit">
+        Save
       </Button>
     </div>
   );
@@ -143,41 +131,52 @@ function ProfileEditForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
+        <Col className={`py-2 p-0 p-md-2 ${styles.leftCol}`} md={7} lg={8}>
+          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
             <Form.Group className="text-center">
-              <figure>
-                <Image className={appStyles.Image} src={profilePicURL} rounded />
-              </figure>
-              <div>
-                <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                  htmlFor="image-upload"
-                >
-                  Change the image
+              {image ? (
+                <>
+                  <figure>
+                    <AvatarComponent
+                      src={image}
+                      height={120}
+                      text={username}
+                      onClick={handleImageClick}
+                      style={{ cursor: "pointer" }}
+                    />
+                  </figure>
+                  <div>
+                    <Form.Label className={`${btnStyles.Button} ${btnStyles.Blue} btn`} htmlFor="image-upload">
+                      Change the image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label className="d-flex justify-content-center" onClick={handleImageClick} style={{ cursor: "pointer" }}>
+                  <Asset message="Click or tap to upload an image" />
                 </Form.Label>
-              </div>
-
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
-              />
+              )}
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Upload Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChangeImage}
+                  ref={imageInput}
+                  style={{ display: "none" }}
+                />
+              </Form.Group>
             </Form.Group>
-            {errors?.profilePicURL?.map((message, idx) => (
+            {errors?.image?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
               </Alert>
             ))}
-
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
+        <Col md={5} lg={4} className={`d-none d-md-block p-0 p-md-2 ${styles.rightCol}`}>
+          <Container className={`${appStyles.Content} ${styles.content}`}>{textFields}</Container>
         </Col>
       </Row>
     </Form>

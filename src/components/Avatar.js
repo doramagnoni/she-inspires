@@ -1,4 +1,3 @@
-// src/components/Avatar.js
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import styles from "../styles/Avatar.module.css";
@@ -10,9 +9,11 @@ const AvatarComponent = ({ src, height = 45, text, showInitialOnly = false }) =>
     <span className="d-flex align-items-center">
       <Avatar
         className={styles.Avatar}
+        src={src}
+        alt={text}
         style={{ height: height, width: height, fontSize: height * 0.4 }}
       >
-        {displayInitial}
+        {!src && displayInitial}
       </Avatar>
       {!showInitialOnly && text && <span className="ml-2">{text}</span>}
     </span>
