@@ -8,7 +8,7 @@ import Alert from "react-bootstrap/Alert";
 import { Image } from "react-bootstrap";
 import Asset from "../../components/Asset";
 import Upload from "../../assets/upload.png";
-import styles from "../../styles/PostCreateEditForm.module.css"; // Import CSS module
+import styles from "../../styles/PostCreateEditForm.module.css"; 
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useNavigate } from "react-router-dom";  
