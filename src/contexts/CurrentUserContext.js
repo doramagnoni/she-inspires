@@ -34,7 +34,7 @@ export const CurrentUserProvider = ({ children }) => {
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
-             navigate.push("/signin");
+              navigate("/signin"); 
             }
             return null;
           });
@@ -56,7 +56,7 @@ export const CurrentUserProvider = ({ children }) => {
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
-                navigate.push("/signin");
+                navigate("/signin"); 
               }
               return null;
             });
