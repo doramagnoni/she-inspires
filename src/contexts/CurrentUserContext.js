@@ -18,7 +18,7 @@ export const CurrentUserProvider = ({ children }) => {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
-      console.log(err);
+      console.log("Error fetching current user on mount:", err);
     }
   };
 
@@ -30,21 +30,22 @@ export const CurrentUserProvider = ({ children }) => {
     axiosReq.interceptors.request.use(
       async (config) => {
         try {
-          await axios.post("/dj-rest-auth/token/refresh/");
+          const refreshToken = localStorage.getItem("refreshToken");
+          if (refreshToken) {
+            const { data } = await axios.post("/dj-rest-auth/token/refresh/", {
+              refresh: refreshToken,
+            });
+            config.headers.Authorization = `Bearer ${data.access}`;
+          }
         } catch (err) {
-          setCurrentUser((prevCurrentUser) => {
-            if (prevCurrentUser) {
-              navigate("/signin"); 
-            }
-            return null;
-          });
-          return config;
+          console.log("Error refreshing token in request interceptor:", err);
+          setCurrentUser(null);
+          navigate("/signin");
+          return Promise.reject(err);
         }
         return config;
       },
-      (err) => {
-        return Promise.reject(err);
-      }
+      (err) => Promise.reject(err)
     );
 
     axiosRes.interceptors.response.use(
@@ -52,16 +53,20 @@ export const CurrentUserProvider = ({ children }) => {
       async (err) => {
         if (err.response?.status === 401) {
           try {
-            await axios.post("/dj-rest-auth/token/refresh/");
-          } catch (err) {
-            setCurrentUser((prevCurrentUser) => {
-              if (prevCurrentUser) {
-                navigate("/signin"); 
-              }
-              return null;
-            });
+            const refreshToken = localStorage.getItem("refreshToken");
+            if (refreshToken) {
+              const { data } = await axios.post("/dj-rest-auth/token/refresh/", {
+                refresh: refreshToken,
+              });
+              err.config.headers.Authorization = `Bearer ${data.access}`;
+              return axios(err.config);
+            }
+          } catch (refreshErr) {
+            console.log("Error refreshing token in response interceptor:", refreshErr);
+            setCurrentUser(null);
+            localStorage.removeItem("refreshToken");
+            window.location.href = "/signin";
           }
-          return axios(err.config);
         }
         return Promise.reject(err);
       }
