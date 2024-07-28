@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import styles from "../styles/Avatar.module.css";
 
-const AvatarComponent = ({ src, height = 45, text, showInitialOnly = false }) => {
+const AvatarComponent = ({ src, height = 45, text, showInitialOnly = false, showName = true }) => {
   const [imageSrc, setImageSrc] = useState(src);
-  const displayInitial = text && text.charAt(0).toUpperCase();
+  const displayInitial = text ? text.charAt(0).toUpperCase() : '';
 
   useEffect(() => {
     // Cache busting
@@ -13,17 +13,22 @@ const AvatarComponent = ({ src, height = 45, text, showInitialOnly = false }) =>
   }, [src]);
 
   return (
-    <span className="d-flex align-items-center">
+    <div className="d-flex align-items-center">
       <Avatar
         className={styles.Avatar}
         src={imageSrc}
         alt={text}
-        style={{ height: height, width: height, fontSize: height * 0.4 }}
+        style={{
+          height: height,
+          width: height,
+          fontSize: height * 0.4,
+          borderRadius: '50%', // Ensure circular shape
+        }}
       >
-        {!src && displayInitial}
+        {!src && (showInitialOnly || !text) && displayInitial}
       </Avatar>
-      {!showInitialOnly && text && <span className="ml-2">{text}</span>}
-    </span>
+      {showName && !showInitialOnly && text && <span className="ml-2">{text}</span>}
+    </div>
   );
 };
 

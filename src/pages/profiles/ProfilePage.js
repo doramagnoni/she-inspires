@@ -9,6 +9,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import AvatarComponent from "../../components/Avatar"; // Ensure correct path
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -53,11 +54,12 @@ function ProfilePage() {
       <Row className={styles.ProfileMain}>
         <Col lg={3} className="text-lg-left">
           <div className={styles.AvatarWrapper}>
-            <Image
-              className={styles.ProfileImage}
+            <AvatarComponent
               src={profile?.image}
-              alt={profile?.owner}
-              roundedCircle
+              text={profile?.owner}
+              height={150}
+              showInitialOnly={!profile?.image} 
+              showName={false} // Hide name on the profile page
             />
           </div>
         </Col>
