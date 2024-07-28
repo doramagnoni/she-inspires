@@ -1,22 +1,35 @@
-import { rest } from "msw";
+import { rest } from 'msw';
 
-const baseURL = "https://sheapi-001672ab3b00.herokuapp.com/";
+// Base URL for your API
+const baseURL = 'https://sheapi-001672ab3b00.herokuapp.com/';
 
+// Mock handlers for your API endpoints
 export const handlers = [
-  rest.get(`${baseURL}dj-rest-auth/user/`, (req, res, ctx) => {
+  // Mock GET request for user profile
+  rest.get(`${baseURL}profiles/:id`, (req, res, ctx) => {
+    const { id } = req.params;
     return res(
       ctx.json({
-        "pk": 9,
-        "username": "Leyla",
-        "email": "",
-        "first_name": "",
-        "last_name": "",
-        "profile_id": 9,
-        "profile_image": "https://res.cloudinary.com/dmqc7ioot/image/upload/v1/media/../user_1144760_1_vut7ya"
+        id: 2,
+        owner: "dorikikimori",
+        created_at: "18 Jul 2024",
+        updated_at: "28 Jul 2024",
+        name: "",
+        content: "My space for sharing inspiring pictures and stories.",
+        image: "https://res.cloudinary.com/dmqc7ioot/image/upload/v1/media/images/Ada_Byron_aged_seventeen_1832_itfpgd",
+        is_owner: false,
+        following_id: null,
+        posts_count: 3,
+        followers_count: 2,
+        following_count: 4
       })
     );
   }),
-  rest.post(`${baseURL}dj-rest-auth/logout/`, (req, res, ctx) => {
+
+  // Mock POST request for user logout
+  rest.post(`${baseURL}admin/logout/`, (req, res, ctx) => {
     return res(ctx.status(200));
   }),
+
+  
 ];

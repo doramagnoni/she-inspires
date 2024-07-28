@@ -1,8 +1,11 @@
+/* NavBar.module.css */
+
 .NavBar {
   background-color: #FBEAFF;
   border: 2px solid #b39cd0e7;
   transform: scale(1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0 15px;
 }
 
 .NavBar:hover {
@@ -10,10 +13,16 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
+.NavContainer {
+  display: flex;
+  justify-content: space-between; /* Space out logo and avatar */
+  align-items: center; /* Center items vertically */
+}
+
 .NavLink {
   color: #333; 
   text-decoration: none;
-  margin-right: 20px; 
+  margin-right: 20px; /* Adjust margin */
   font-size: 14px; 
   padding: 8px 10px; 
   display: flex;
@@ -28,47 +37,44 @@
 }
 
 .Title {
-  margin-right: 85px; 
   font-size: 24px; 
   font-weight: 400;
   color: #333; 
 }
 
-i {
-  margin-right: 2px;
-  color: #4D8076;
-  font-size: 18px; 
-  transition: color 0.3s ease;
+.showOnMobile {
+  display: block; /* Ensure it shows up on mobile when logged out */
 }
 
-.NavLink:hover i {
-  color: #23aa94; 
-}
-
-.ProfileImage {
-  border-radius: 50%; 
-  height: 30px; 
-  width: 30px; 
-  border: 2px solid #B39CD0; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+.NavItems {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Allow items to grow and fill the space */
 }
 
 .MobileAvatarWrapper {
-  display: none;
-  margin-right: auto; 
+  display: none; /* Hide by default, show on mobile */
 }
 
-@media (max-width: 991px) {
+/* Responsive Styles */
+@media (max-width: 768px) {
   .MobileAvatarWrapper {
-    display: block;
-    margin-right: 15px; 
+    display: block; /* Show avatar on mobile */
+    margin-left: auto; /* Move avatar to the end of the navbar */
+    order: 2; /* Ensure avatar is positioned after the toggle button */
   }
 
   .Title {
-    display: none; 
+    display: none; /* Hide title on mobile if logged in */
   }
 
-  .Title.showOnMobile {
-    display: block; 
+  .NavItems {
+    flex-direction: column; /* Stack items vertically on mobile */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .navbar-toggler {
+    margin-left: auto; /* Move the toggle button to the right */
+    order: 1; /* Ensure toggle button is positioned before the avatar */
   }
 }
