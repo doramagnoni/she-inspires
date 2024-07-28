@@ -20,6 +20,8 @@ axiosReq.interceptors.request.use(
       }
     } catch (err) {
       console.log(err);
+      // Handle the case where token refresh fails
+      // For example, you can dispatch a logout action or update the UI
     }
     return config;
   },
@@ -41,8 +43,11 @@ axiosRes.interceptors.response.use(
         }
       } catch (err) {
         console.log(err);
+        // Notify user that session has expired or token refresh failed
+        // Avoid redirecting to sign-in page automatically
+        // You might handle this differently based on your app's requirements
         localStorage.removeItem("refreshToken");
-        window.location.href = "/signin"; // Redirect to sign-in page
+        // Optionally, update application state or show a notification
       }
     }
     return Promise.reject(err);
