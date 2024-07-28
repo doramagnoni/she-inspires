@@ -1,11 +1,11 @@
 .Comment {
   display: flex;
   flex-direction: column;
-  background-color: #fff; /* White background for each comment */
-  border-radius: 10px; /* Rounded corners for comments */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  margin-bottom: 15px; /* Space between comments */
-  padding: 10px 15px; /* Internal padding */
+  background-color: #FBEAFF; 
+  border-radius: 10px; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 15px; 
+  padding: 10px 15px; 
 }
 
 .CommentBody {
@@ -16,7 +16,7 @@
 .AvatarWrapper {
   display: flex;
   align-items: center;
-  margin-right: 12px; /* Space between avatar and content */
+  margin-right: 12px; 
 }
 
 .CommentContent {
@@ -27,19 +27,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px; /* Space below the header */
+  margin-bottom: 5px; 
 }
 
 .Date {
-  font-size: 0.75rem; /* Smaller font size for the date */
-  color: #999; /* Lighter color for the date */
-  margin-left: 5px; /* Space between username and date */
+  font-size: 0.75rem; 
+  color: #999; 
+  margin-left: 5px; 
 }
 
 .CommentText {
-  font-size: 0.875rem; /* Slightly larger font size for readability */
-  color: #333; /* Dark color for the comment text */
-  margin: 0; /* Remove default margin */
+  font-size: 0.875rem; 
+  color: #333; 
+  margin: 0; 
 }
 
 .noUnderline {
@@ -53,13 +53,13 @@
 
 .EditButton, .DeleteButton {
   cursor: pointer;
-  margin-left: 10px; /* Space between buttons */
-  color: #007bff; /* Color for buttons */
+  margin-left: 10px; 
+  color: #007bff; 
   border: none;
   background: none;
   font-size: 0.875rem;
 }
 
 .EditButton:hover, .DeleteButton:hover {
-  text-decoration: underline; /* Underline on hover */
+  text-decoration: underline; 
 }
