@@ -22,7 +22,7 @@ const AvatarComponent = ({ src, height = 45, text, showInitialOnly = false, show
           height: height,
           width: height,
           fontSize: height * 0.4,
-          borderRadius: '50%', // Ensure circular shape
+          borderRadius: '50%', 
         }}
       >
         {!src && (showInitialOnly || !text) && displayInitial}

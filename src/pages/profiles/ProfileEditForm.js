@@ -73,7 +73,6 @@ function ProfileEditForm() {
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
       if (currentUser && currentUser.id === id) {
-        
         setCurrentUser((prevUser) => ({
           ...prevUser,
           profile_image: data.image,
@@ -90,18 +89,19 @@ function ProfileEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={12}>
-          <Container className={`${styles.Container} d-flex flex-column justify-content-center`}>
-            <Form.Group className="text-center">
-              <figure>
-                <img
-                  src={profileData.image}
-                  alt="Profile"
-                  style={{ height: 120, width: 120, objectFit: 'cover', borderRadius: '50%' }}
-                />
-              </figure>
-              <Form.Label className={`${btnStyles.Button} ${btnStyles.Blue} btn`} htmlFor="image-upload">
+      <Container className={styles.Container}>
+        <Row>
+          <Col md={12}>
+            <div className={styles.ProfileImageWrapper}>
+              <img
+                src={profileData.image}
+                alt="Profile"
+                className={styles.ProfileImage}
+              />
+              <Form.Label
+                className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.ChangeImageButton}`}
+                htmlFor="image-upload"
+              >
                 Change the image
               </Form.Label>
               <Form.Control
@@ -112,51 +112,58 @@ function ProfileEditForm() {
                 ref={imageInput}
                 style={{ display: 'none' }}
               />
-            </Form.Group>
+            </div>
 
-            <Form.Group>
-              <Form.Label>Username</Form.Label>
+            <Form.Group className={styles.FormGroup}>
+              <Form.Label className={styles.FormLabel}>Username</Form.Label>
               <Form.Control
                 type="text"
                 name="username"
                 value={username}
                 onChange={handleChange}
+                className={styles.FormControl}
               />
               {errors?.username?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert variant="warning" key={idx} className={styles.Alert}>
                   {message}
                 </Alert>
               ))}
             </Form.Group>
 
-            <Form.Group>
-              <Form.Label>Content</Form.Label>
+            <Form.Group className={styles.FormGroup}>
+              <Form.Label className={styles.FormLabel}>Content</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={6}
                 name="content"
                 value={content}
                 onChange={handleChange}
+                className={styles.FormControl}
               />
               {errors?.content?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
+                <Alert variant="warning" key={idx} className={styles.Alert}>
                   {message}
                 </Alert>
               ))}
             </Form.Group>
 
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
-              onClick={() => navigate(-1)}
-            >
-              Cancel
-            </Button>
-            <Button className={`${btnStyles.Button} ${btnStyles.Black}`} type="submit">
-              Save
-            </Button>
-          </Container>
-        </Col>
-      </Row>
+            <div>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.BlackOutline} ${styles.CancelButton}`}
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.Black} ${styles.SaveButton}`}
+                type="submit"
+              >
+                Save
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </Form>
   );
 }

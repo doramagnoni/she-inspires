@@ -23,7 +23,7 @@ const Profile = (props) => {
             height={imageSize} 
             text={owner} 
             showInitialOnly={!image} 
-            showName={false}  // Ensure no name display in AvatarComponent
+            showName={false}  
           />
         </Link>
       </div>
