@@ -1,50 +1,65 @@
 .Comment {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .CommentBody {
-    display: flex;
-    align-items: flex-start;
-    padding: 10px;
-  }
-  
-  .CommentBody hr {
-    width: 100%;
-    border: 0.5px solid #ddd;
-  }
-  
-  .CommentContent {
-    flex-grow: 1;
-    margin-left: 10px;
-  }
-  
-  .CommentHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .Owner {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .Date {
-    font-size: 0.875rem;
-    color: #333; 
-  }
-  
-  .CommentText {
-    margin-bottom: auto;
-  }
-  
-  .noUnderline {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .noUnderline:hover {
-    text-decoration: none;
-    
-  }
+  display: flex;
+  flex-direction: column;
+  background-color: #fff; /* White background for each comment */
+  border-radius: 10px; /* Rounded corners for comments */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 15px; /* Space between comments */
+  padding: 10px 15px; /* Internal padding */
+}
+
+.CommentBody {
+  display: flex;
+  align-items: flex-start;
+}
+
+.AvatarWrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 12px; /* Space between avatar and content */
+}
+
+.CommentContent {
+  flex-grow: 1;
+}
+
+.CommentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px; /* Space below the header */
+}
+
+.Date {
+  font-size: 0.75rem; /* Smaller font size for the date */
+  color: #999; /* Lighter color for the date */
+  margin-left: 5px; /* Space between username and date */
+}
+
+.CommentText {
+  font-size: 0.875rem; /* Slightly larger font size for readability */
+  color: #333; /* Dark color for the comment text */
+  margin: 0; /* Remove default margin */
+}
+
+.noUnderline {
+  text-decoration: none;
+  color: inherit;
+}
+
+.noUnderline:hover {
+  text-decoration: none;
+}
+
+.EditButton, .DeleteButton {
+  cursor: pointer;
+  margin-left: 10px; /* Space between buttons */
+  color: #007bff; /* Color for buttons */
+  border: none;
+  background: none;
+  font-size: 0.875rem;
+}
+
+.EditButton:hover, .DeleteButton:hover {
+  text-decoration: underline; /* Underline on hover */
+}

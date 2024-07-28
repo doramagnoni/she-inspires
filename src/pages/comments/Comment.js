@@ -7,8 +7,6 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosRes } from "../../api/axiosDefaults";
 import CommentEditForm from "./CommentEditForm";
 
-
-
 const Comment = (props) => {
   const {
     profile_id,
@@ -41,19 +39,22 @@ const Comment = (props) => {
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-    } catch (err) {}
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
     <div className={styles.Comment}>
-      <hr />
       <div className={styles.CommentBody}>
         <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
-           <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} /> 
+          <div className={styles.AvatarWrapper}>
+            <AvatarComponent src={profile_image} height={45} /> {/* Only display the avatar here */}
+          </div>
         </Link>
         <div className={styles.CommentContent}>
           <div className={styles.CommentHeader}>
-            
+            <span className={styles.Owner}>{owner}</span> {/* Display username only once */}
             <span className={styles.Date}>{updated_at}</span>
           </div>
           {showEditForm ? (
@@ -66,9 +67,7 @@ const Comment = (props) => {
               setShowEditForm={setShowEditForm}
             />
           ) : (
-
-
-          <p className={styles.CommentText}>{content}</p>
+            <p className={styles.CommentText}>{content}</p>
           )}
         </div>
 
@@ -78,7 +77,6 @@ const Comment = (props) => {
             handleDelete={handleDelete}
           />
         )}
-
       </div>
     </div>
   );
