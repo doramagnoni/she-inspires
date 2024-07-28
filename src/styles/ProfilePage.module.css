@@ -45,9 +45,9 @@
   justify-content: center;
 }
 
-.AvatarImage {
-  height: 200%;
+.ProfileImage {
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
-

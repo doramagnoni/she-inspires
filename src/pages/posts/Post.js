@@ -13,6 +13,7 @@ const Post = (props) => {
     id,
     owner,
     profile_id,
+    profile_image, 
     comments_count,
     likes_count,
     like_id,
@@ -89,7 +90,7 @@ const Post = (props) => {
           <Col xs="auto">
             <div className="d-flex align-items-center">
               <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
-                <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} />
+                <AvatarComponent src={profile_image} text={owner} height={45} /> 
               </Link>
               <span className="mx-2">•</span>
               <span className="ml-2 text-muted">{updated_at}</span>

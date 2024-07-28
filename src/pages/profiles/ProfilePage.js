@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import { Col, Row, Container, Button, Image } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import Asset from "../../components/Asset";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
+import NoResults from "../../assets/no-results.png";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams, Link } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
-
-import {
-  useProfileData,
-  useSetProfileData,
-} from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
-import NoResults from "../../assets/no-results.png";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
-import AvatarComponent from "../../components/Avatar";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -60,11 +53,11 @@ function ProfilePage() {
       <Row className={styles.ProfileMain}>
         <Col lg={3} className="text-lg-left">
           <div className={styles.AvatarWrapper}>
-            <AvatarComponent
-              src={currentUser?.profile_image}
-              text={currentUser?.username}
-              showInitialOnly={true}
-              height={120} 
+            <Image
+              className={styles.ProfileImage}
+              src={profile?.image}
+              alt={profile?.owner}
+              roundedCircle
             />
           </div>
         </Col>
@@ -86,7 +79,7 @@ function ProfilePage() {
           </Row>
         </Col>
         <Col lg={3} className={styles.ProfileActions}>
-          {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+          {is_owner && <ProfileEditDropdown id={profile?.id} />}
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (
