@@ -66,15 +66,15 @@ function ProfilePage() {
         <Col lg={6} className={styles.ProfileDetails}>
           <h3 className="m-2">{profile?.owner}</h3>
           <Row className={`${styles.ProfileStats} justify-content-center no-gutters`}>
-            <Col xs={3} className={`${styles.ProfileStat} my-2`}>
+            <Col xs={4} sm={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.posts_count}</div>
               <div>posts</div>
             </Col>
-            <Col xs={3} className={`${styles.ProfileStat} my-2`}>
+            <Col xs={4} sm={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.followers_count}</div>
               <div>followers</div>
             </Col>
-            <Col xs={3} className={`${styles.ProfileStat} my-2`}>
+            <Col xs={4} sm={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.following_count}</div>
               <div>following</div>
             </Col>
@@ -102,7 +102,7 @@ function ProfilePage() {
         </Col>
       </Row>
       {profile?.content && (
-        <Row>
+        <Row className="mt-3">
           <Col className={styles.ProfileContent}>{profile.content}</Col>
         </Row>
       )}
@@ -139,20 +139,16 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={12}>
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfilePosts}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
-        </Container>
-      </Col>
-    </Row>
+    <Container className={appStyles.Content}>
+      {hasLoaded ? (
+        <>
+          {mainProfile}
+          {mainProfilePosts}
+        </>
+      ) : (
+        <Asset spinner />
+      )}
+    </Container>
   );
 }
 

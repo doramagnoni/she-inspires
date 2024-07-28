@@ -3,7 +3,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import styles from "../styles/MoreDropdown.module.css";
 import { useNavigate } from "react-router-dom";
 
-
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   <i
     className="fas fa-ellipsis-v"
@@ -14,12 +13,13 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     }}
   />
 ));
+
 const dropdownMenuStyle = {
-    backgroundColor: "#f0f0f0",
-    position: "absolute",
-    left: 0,
-    top: "100%",
-  };
+  backgroundColor: "#f0f0f0",
+  position: "absolute",
+  left: 0,
+  top: "100%",
+};
 
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
   return (
@@ -28,7 +28,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
 
       <Dropdown.Menu
         style={dropdownMenuStyle}
-        className={`dropdown-menu ${styles.dropdownMenu}`}
+        className={`${styles.dropdownMenu}`}
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item className={styles.DropdownItem} onClick={handleEdit}>
@@ -38,7 +38,6 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
         <Dropdown.Item className={styles.DropdownItem} onClick={handleDelete}>
           <i className="fas fa-trash-alt" /> Delete
         </Dropdown.Item>
-
       </Dropdown.Menu>
     </Dropdown>
   );
@@ -51,24 +50,27 @@ export const ProfileEditDropdown = ({ id }) => {
       <Dropdown.Toggle as={ThreeDots} className={styles.dropdownToggle} />
       <Dropdown.Menu
         style={dropdownMenuStyle}
-        className={`dropdown-menu ${styles.dropdownMenu}`}
+        className={`${styles.dropdownMenu}`}
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
           onClick={() => navigate(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
+          className={styles.DropdownItem}
         >
           <i className="fas fa-edit" /> Edit profile
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => navigate(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
+          className={styles.DropdownItem}
         >
           <i className="far fa-id-card" /> Change username
         </Dropdown.Item>
         <Dropdown.Item
           onClick={() => navigate(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
+          className={styles.DropdownItem}
         >
           <i className="fas fa-key" /> Change password
         </Dropdown.Item>
@@ -76,4 +78,3 @@ export const ProfileEditDropdown = ({ id }) => {
     </Dropdown>
   );
 };
-

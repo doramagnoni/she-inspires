@@ -1,9 +1,29 @@
+.ProfileMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px;
+  
+  width: 100%;
+}
+
+.AvatarWrapper {
+  height: 150px; 
+  width: 150px;  
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px; /* Add margin to separate from details */
+}
+
 .ProfileDetails {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex: 1;
+  align-items: flex-start; /* Align items to the start */
   padding: 20px;
+  flex: 1;
 }
 
 .ProfileStats {
@@ -17,16 +37,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 30px;
-}
-
-.ProfileMain {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #dee2e6;
-  width: 100%;
+  padding: 0 15px; /* Adjust padding for smaller screens */
 }
 
 .ProfileActions {
@@ -35,19 +46,46 @@
   justify-content: flex-end;
 }
 
-.AvatarWrapper {
-  height: 150px; 
-  width: 150px;  
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ProfileContent {
+  padding: 20px;
+  text-align: center;
 }
 
-.ProfileImage {
+.PostGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.PostGridItem {
+  display: block;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative; /* To position the image absolutely */
+}
+
+.PostGridItem img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: cover; /* Crop and cover */
+  border-radius: 5px;
+}
+.PostGridItem {
+  transition: transform 0.3s ease;
+}
+
+.PostGridItem:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .ProfileMain {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .AvatarWrapper {
+    margin-bottom: 20px;
+  }
 }
