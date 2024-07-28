@@ -1,58 +1,55 @@
 .Profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .ProfileImage {
-    width: 35px; 
-    height: 35px; 
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .WordBreak {
-    word-break: break-word;
-  }
-  
-  .ButtonContainer {
-    margin-top: 0px;
-  }
-  
-  .Button {
-    font-size: 14px;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 10px;
-  }
-  
-  .Black {
-    background-color: #343a40;
-    color: #ffffff;
-  }
-  
-  .Black:hover {
-    background-color: #23272b;
-  }
-  
-  .BlackOutline {
-    background-color: transparent;
-    border: 1px solid #343a40;
-    color: #343a40;
-  }
-  
-  .BlackOutline:hover {
-    background-color: #23aa94;
-    color: #ffffff;
-    border: 1px solid #343a40;
-  }
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
 
-  .noUnderline {
-    text-decoration: none;
-    color: inherit;
-  }
+.ProfileImage {
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+.ButtonContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.Button {
+  font-size: 14px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   
-  
+}
+
+.Black {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.Black:hover {
+  background-color: #23272b;
+}
+
+.BlackOutline {
+  background-color: transparent;
+  border: 1px solid #343a40;
+  color: #343a40;
+}
+
+.BlackOutline:hover {
+  background-color: #23aa94;
+  color: #ffffff;
+  border: 1px solid #343a40;
+}
+
+.noUnderline {
+  text-decoration: none;
+  color: inherit;
+}
