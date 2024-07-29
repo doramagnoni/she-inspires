@@ -1,4 +1,3 @@
-
 .Container {
   background-color: #FBEAFF;
   border-radius: 10px;
@@ -6,12 +5,8 @@
   padding: 20px;
 }
 
-
-
-@media (max-width: 768px) {
-  .d-md-none {
-    display: block !important;
-  }
+.d-md-none {
+  display: block !important;
 }
 
 .customFileInput input[type="file"] {
@@ -20,13 +15,12 @@
 
 .customFormLabel {
   font-weight: bold;
-  color: #333; 
+  color: #333;
   margin-top: 10px;
 }
 
-
 .customFormControl {
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   background-color: #FBEAFF;
   padding: 8px;
   border-radius: 4px;
@@ -34,13 +28,30 @@
   margin-bottom: 10px;
 }
 
-
 .customButton {
   margin-right: 10px;
   margin-top: 10px;
   background-color: #4D8076;
+  border: none;
+  color: white;
 }
 
 .customButton:hover {
-  background-color: #23aa94;;
+  background-color: #23aa94;
+}
+
+.changeImageButton {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #4D8076;
+  border: none;
+  color: white;
+}
+
+.changeImageButton:hover {
+  background-color: #23aa94;
+}
+
+.customAlert {
+  margin-top: 10px;
 }

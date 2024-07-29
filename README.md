@@ -9,13 +9,17 @@ She Inspires is a platform designed to celebrate women's achievements, foster a 
 You can try out a live demo of She Inspires deployed on Heroku here: [https://she-inspires-3dbf32b2af97.herokuapp.com/](https://she-inspires-3dbf32b2af97.herokuapp.com/)
 And its API here: [https://sheapi-001672ab3b00.herokuapp.com/](https://sheapi-001672ab3b00.herokuapp.com/)
 
+
+## 🌟 Main Features of She Inspires
+She Inspires is a dynamic social media platform tailored to celebrate and empower women through a variety of inspirational content. Users can engage with posts, quotes, and images that resonate with their personal experiences and aspirations. One of the standout features of the platform is the Stories section, which showcases the lives and achievements of famous women throughout history, offering users a glimpse into their impactful journeys. While users can interact with content and share their thoughts, only the site administrators have the capability to add new stories. The platform supports user authentication, allowing individuals to sign up, log in, and manage their accounts securely with their usernames and passwords. This blend of features creates a vibrant and supportive community dedicated to inspiring and uplifting women from all walks of life.
+
 ## 🎨 UX Design Philosophy
 
 * **User-Centric Design:**
-  * **Strategy Plane:** The platform is built around the needs of women, focusing on understanding their goals and creating an inclusive and welcoming space. This involves detailed research into user needs and business objectives to ensure alignment.
+  * **Strategy Plane:** The platform is built around the needs of women, focusing on understanding their goals and creating an inclusive and welcoming space. 
 
 * **Intuitive Navigation:**
-  * **Scope Plane:** A clear and easy-to-use navigation structure is designed to include all necessary features and content. We define functional requirements and organize content effectively, ensuring users can quickly find the information they need.
+  * **Scope Plane:** A clear and easy-to-use navigation structure is designed to include all necessary features and content. We define functional requirements and organize content, ensuring users can quickly find the information they need.
 
 * **Engaging Content:**
   * **Structure Plane:** Stories and articles are structured to be visually appealing and interactive. We focus on organizing information in a user-friendly manner, using wireframes and user flows to enhance accessibility and engagement.
