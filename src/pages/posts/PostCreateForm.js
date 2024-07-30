@@ -151,7 +151,7 @@ function PostCreateForm() {
                   <Asset src={Upload} message="Click or tap to upload an image" />
                 </Form.Label>
               )}
-              <Form.Group controlId="formFile" className="mb-3">
+              <Form.Group className="mb-3">
                 <Form.Control
                   id="image-upload"
                   type="file"
