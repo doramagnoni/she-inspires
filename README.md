@@ -126,10 +126,108 @@ She Inspires is a dynamic social media platform tailored to celebrate and empowe
 6.  **Run the backend development server:**  `python manage.py runserver`
 
 
-##    Testing with Jest 
+## 🛠️ Reusable React Components
 
-She Inspires takes pride in its quality and functionality, and all Jest tests have passed with flying colors! 
+Reusable components are a cornerstone of React architecture, promoting code reuse, maintainability, and consistency across your application. This section provides examples of reusable React components, showcasing how they can be utilized to build efficient and scalable applications.
 
+Reusable components are self-contained units of code that can be used across different parts of an application. They help in:
+
+1. **Reducing Code Duplication: Write a component once and use it multiple times, minimizing redundancy.
+2. **Improving Maintainability: Centralize updates in one place, making it easier to manage changes.
+3. **Enhancing Consistency: Ensure uniformity in UI and behavior across the application.
+
+Examples of Reusable Components:
+
+In the "She Inspires" project, we utilize reusable components like AvatarComponent and Asset to maintain consistency and streamline the development process. Below are examples of how these components are used across the application.
+
+1. **The AvatarComponent is used to display user profile pictures or initials if an image is not available. This component ensures a consistent look and feel for user avatars throughout the application.
+
+In a user profile page, the post page and the feed, the AvatarComponent can be used to display the user's profile picture or initials.
+
+2. **Asset Component
+The Asset component is used for displaying loading spinners, images, or messages when assets are being fetched or if there are no results.
+
+The Asset component is used for displaying loading spinners, images, or messages when assets are being fetched or if there are no results.
+
+
+
+##  🚀  Manual Testing
+
+Manual testing is essential for ensuring that the "She Inspires" application functions correctly and provides a seamless user experience. Below are guidelines and steps to manually test the application, including test scenarios for various features.
+
+
+** Prerequisites:
+1. Setup: Ensure that the application is running locally or on a staging environment.
+
+2. Browser: Use a modern web browser (e.g., Chrome, Firefox, Safari) to perform the tests.
+
+3. User Accounts: Have access to different user roles (e.g., regular user, admin) if applicable.
+
+** Testing Scenarios
+1. User Authentication
+Login:
+
+Navigate to the login page.
+Enter valid credentials and submit the form.
+Verify successful login by checking for redirection to the dashboard or home page.
+Check for the presence of user-specific elements (e.g., profile picture, username).
+Logout:
+
+Click on the logout button (usually found in the user menu or header).
+Confirm that the user is logged out and redirected to the login page.
+Registration:
+
+Navigate to the registration page.
+Fill out the registration form with valid details and submit.
+Verify successful registration and automatic login or redirection to the login page.
+
+
+2. Profile Management
+View Profile:
+
+Navigate to the user profile page.
+Verify that the profile information (e.g., profile picture, bio, contact info) is displayed correctly.
+Edit Profile:
+
+Click the edit profile button.
+Update profile information and save changes.
+Verify that changes are reflected on the profile page.
+Change Password:
+
+Navigate to the password change section.
+Enter the current password and a new password.
+Save changes and verify that the new password is accepted for future logins.
+
+
+3. Content Creation and Management
+Create Post:
+
+Navigate to the content creation page.
+Enter details for a new post (e.g., title, content, image).
+Submit the form and verify that the post appears in the user’s feed or profile.
+Edit Post:
+
+Navigate to an existing post.
+Click the edit button and modify the post details.
+Save changes and verify that the updated content is displayed correctly.
+Delete Post:
+
+Navigate to the post you want to delete.
+Click the delete button and confirm the action.
+Verify that the post is no longer visible.
+
+
+4. User Interaction
+Like/Comment on Post:
+
+Navigate to a post in the feed.
+Like the post and add a comment.
+Verify that the like and comment are displayed correctly.
+Follow/Unfollow User:
+
+Navigate to another user’s profile.
+Click the follow/unfollow button.
+Verify that the action updates correctly on the profile and in the follower/following lists.
 
 ## 🚀 Lighthouse Test
 
