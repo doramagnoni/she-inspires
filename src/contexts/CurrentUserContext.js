@@ -55,14 +55,20 @@ export const CurrentUserProvider = ({ children }) => {
           try {
             const refreshToken = localStorage.getItem("refreshToken");
             if (refreshToken) {
-              const { data } = await axios.post("/dj-rest-auth/token/refresh/", {
-                refresh: refreshToken,
-              });
+              const { data } = await axios.post(
+                "/dj-rest-auth/token/refresh/",
+                {
+                  refresh: refreshToken,
+                }
+              );
               err.config.headers.Authorization = `Bearer ${data.access}`;
               return axios(err.config);
             }
           } catch (refreshErr) {
-            console.log("Error refreshing token in response interceptor:", refreshErr);
+            console.log(
+              "Error refreshing token in response interceptor:",
+              refreshErr
+            );
             setCurrentUser(null);
             localStorage.removeItem("refreshToken");
             window.location.href = "/signin";

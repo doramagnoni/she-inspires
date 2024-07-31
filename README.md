@@ -404,7 +404,9 @@ I want to express my sincere gratitude to the following individuals and resource
 
 *   **[Online Resource/Tutorial]:**  I used extensively the API walkthrough project provided by Code Institute as well as inspiration from the project Moments. 
 
+I extend my gratitude to the contributors of Wikimedia Commons for their valuable contributions. Additionally, all web page content, design, and functionality were created by the author of this project.
 
+For more information on image licenses and usage, please refer to the respective Wikimedia Commons pages linked to the images used.
 
 
 

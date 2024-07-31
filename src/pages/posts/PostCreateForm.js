@@ -116,7 +116,10 @@ function PostCreateForm() {
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`}
+        type="submit"
+      >
         Create
       </Button>
     </div>
@@ -126,7 +129,9 @@ function PostCreateForm() {
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col className={`py-2 p-0 p-md-2 ${styles.leftCol}`} md={7} lg={8}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Container
+            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+          >
             <Form.Group className="text-center">
               {image ? (
                 <>
@@ -147,8 +152,15 @@ function PostCreateForm() {
                   </Button>
                 </>
               ) : (
-                <Form.Label className="d-flex justify-content-center" onClick={handleImageClick} style={{ cursor: "pointer" }}>
-                  <Asset src={Upload} message="Click or tap to upload an image" />
+                <Form.Label
+                  className="d-flex justify-content-center"
+                  onClick={handleImageClick}
+                  style={{ cursor: "pointer" }}
+                >
+                  <Asset
+                    src={Upload}
+                    message="Click or tap to upload an image"
+                  />
                 </Form.Label>
               )}
               <Form.Group className="mb-3">
@@ -170,8 +182,14 @@ function PostCreateForm() {
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className={`d-none d-md-block p-0 p-md-2 ${styles.rightCol}`}>
-          <Container className={`${appStyles.Content} ${styles.content}`}>{textFields}</Container>
+        <Col
+          md={5}
+          lg={4}
+          className={`d-none d-md-block p-0 p-md-2 ${styles.rightCol}`}
+        >
+          <Container className={`${appStyles.Content} ${styles.content}`}>
+            {textFields}
+          </Container>
         </Col>
       </Row>
     </Form>

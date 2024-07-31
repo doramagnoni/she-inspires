@@ -1,5 +1,5 @@
 .Container {
-  background-color: #FBEAFF;
+  background-color: #fbeaff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -21,7 +21,7 @@
 
 .customFormControl {
   border: 1px solid #ccc;
-  background-color: #FBEAFF;
+  background-color: #fbeaff;
   padding: 8px;
   border-radius: 4px;
   width: 100%;
@@ -31,7 +31,7 @@
 .customButton {
   margin-right: 10px;
   margin-top: 10px;
-  background-color: #4D8076;
+  background-color: #4d8076;
   border: none;
   color: white;
 }
@@ -43,7 +43,7 @@
 .changeImageButton {
   margin-top: 10px;
   margin-bottom: 20px;
-  background-color: #4D8076;
+  background-color: #4d8076;
   border: none;
   color: white;
 }

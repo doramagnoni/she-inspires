@@ -13,7 +13,7 @@ const Post = (props) => {
     id,
     owner,
     profile_id,
-    profile_image, 
+    profile_image,
     comments_count,
     likes_count,
     like_id,
@@ -86,17 +86,25 @@ const Post = (props) => {
   return (
     <Card className={`${styles.Post}`}>
       <Card.Body className={styles.PostBody}>
-        <Row className={`${styles.PostHeader} align-items-center justify-content-between`}>
+        <Row
+          className={`${styles.PostHeader} align-items-center justify-content-between`}
+        >
           <Col xs="auto">
             <div className="d-flex align-items-center">
-              <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
-                <AvatarComponent src={profile_image} text={owner} height={45} /> 
+              <Link
+                to={`/profiles/${profile_id}`}
+                className={styles.noUnderline}
+              >
+                <AvatarComponent src={profile_image} text={owner} height={45} />
               </Link>
               <span className="mx-2">•</span>
               <span className="ml-2 text-muted">{updated_at}</span>
               {is_owner && postPage && (
                 <Col xs="auto" className="d-flex justify-content-end">
-                  <MoreDropdown handleEdit={handleEdit} handleDelete={handleDelete} />
+                  <MoreDropdown
+                    handleEdit={handleEdit}
+                    handleDelete={handleDelete}
+                  />
                 </Col>
               )}
             </div>

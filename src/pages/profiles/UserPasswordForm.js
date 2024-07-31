@@ -36,7 +36,6 @@ const UserPasswordForm = () => {
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
-     
       navigate("/");
     }
   }, [currentUser, navigate, id]);

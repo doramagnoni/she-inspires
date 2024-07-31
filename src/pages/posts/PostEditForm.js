@@ -1,9 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Form, Button, Container, Row, Col, Alert, Image } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Alert,
+  Image,
+} from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
-import styles from "../../styles/PostCreateEditForm.module.css"; 
+import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
@@ -121,7 +129,10 @@ function PostEditForm() {
       >
         Cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Blue} ${styles.customButton}`}
+        type="submit"
+      >
         Save
       </Button>
     </div>
@@ -131,7 +142,9 @@ function PostEditForm() {
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col className={`py-2 p-0 p-md-2 ${styles.leftCol}`} md={7} lg={8}>
-          <Container className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}>
+          <Container
+            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+          >
             <Form.Group className="text-center">
               {image ? (
                 <>
@@ -145,13 +158,20 @@ function PostEditForm() {
                     />
                   </figure>
                   <div>
-                    <Form.Label className={`${btnStyles.Button} ${btnStyles.Blue} btn`} htmlFor="image-upload">
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="image-upload"
+                    >
                       Change the image
                     </Form.Label>
                   </div>
                 </>
               ) : (
-                <Form.Label className="d-flex justify-content-center" onClick={handleImageClick} style={{ cursor: "pointer" }}>
+                <Form.Label
+                  className="d-flex justify-content-center"
+                  onClick={handleImageClick}
+                  style={{ cursor: "pointer" }}
+                >
                   <Asset message="Click or tap to upload an image" />
                 </Form.Label>
               )}
@@ -174,8 +194,14 @@ function PostEditForm() {
             <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col md={5} lg={4} className={`d-none d-md-block p-0 p-md-2 ${styles.rightCol}`}>
-          <Container className={`${appStyles.Content} ${styles.content}`}>{textFields}</Container>
+        <Col
+          md={5}
+          lg={4}
+          className={`d-none d-md-block p-0 p-md-2 ${styles.rightCol}`}
+        >
+          <Container className={`${appStyles.Content} ${styles.content}`}>
+            {textFields}
+          </Container>
         </Col>
       </Row>
     </Form>

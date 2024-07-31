@@ -1,15 +1,15 @@
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom";
 
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 
-import Stories from './components/Stories';
-import StoryDetail from './components/StoryDetail';
-import Hero from './components/Hero';
+import Stories from "./components/Stories";
+import StoryDetail from "./components/StoryDetail";
+import Hero from "./components/Hero";
 
 import PostCreateForm from "./pages/posts/PostCreateForm";
 import PostPage from "./pages/posts/PostPage";
@@ -22,27 +22,24 @@ import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
-
 function App() {
-
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
- 
-  
 
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
         <Routes>
-        <Route path="/" element={
-        <>
-          <Hero />
-          <PostsPage 
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <PostsPage />
+              </>
+            }
           />
-        </>
-      } 
-      /> 
 
           <Route
             path="/feed"
@@ -72,8 +69,14 @@ function App() {
           <Route path="/posts/:id" element={<PostPage />} />
           <Route path="/posts/:id/edit" element={<PostEditForm />} />
           <Route path="/profiles/:id" element={<ProfilePage />} />
-          <Route path="/profiles/:id/edit/username" element={<UsernameForm />} />
-          <Route path="/profiles/:id/edit/password" element={<UserPasswordForm />} />
+          <Route
+            path="/profiles/:id/edit/username"
+            element={<UsernameForm />}
+          />
+          <Route
+            path="/profiles/:id/edit/password"
+            element={<UserPasswordForm />}
+          />
           <Route path="/profiles/:id/edit" element={<ProfileEditForm />} />
           <Route path="*" element={<p>Page not found!</p>} />
         </Routes>

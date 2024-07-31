@@ -6,7 +6,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
-import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
+import {
+  useProfileData,
+  useSetProfileData,
+} from "../../contexts/ProfileDataContext";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import AvatarComponent from "../../components/Avatar"; // Ensure correct path
@@ -58,14 +61,16 @@ function ProfilePage() {
               src={profile?.image}
               text={profile?.owner}
               height={150}
-              showInitialOnly={!profile?.image} 
+              showInitialOnly={!profile?.image}
               showName={false} // Hide name on the profile page
             />
           </div>
         </Col>
         <Col lg={6} className={styles.ProfileDetails}>
           <h3 className="m-2">{profile?.owner}</h3>
-          <Row className={`${styles.ProfileStats} justify-content-center no-gutters`}>
+          <Row
+            className={`${styles.ProfileStats} justify-content-center no-gutters`}
+          >
             <Col xs={4} sm={3} className={`${styles.ProfileStat} my-2`}>
               <div>{profile?.posts_count}</div>
               <div>posts</div>
@@ -123,7 +128,11 @@ function ProfilePage() {
         >
           <div className={styles.PostGrid}>
             {profilePosts.results.map((post) => (
-              <Link key={post.id} to={`/posts/${post.id}`} className={styles.PostGridItem}>
+              <Link
+                key={post.id}
+                to={`/posts/${post.id}`}
+                className={styles.PostGridItem}
+              >
                 <Image src={post.image} alt={post.title} thumbnail />
               </Link>
             ))}

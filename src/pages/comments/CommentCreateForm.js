@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -12,8 +11,6 @@ function CommentCreateForm(props) {
   const { post, setPost, setComments, profile_id } = props;
   const [content, setContent] = useState("");
   const currentUser = useCurrentUser();
-
-  
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -45,9 +42,17 @@ function CommentCreateForm(props) {
   };
 
   return (
-    <Form className={`mt-2 ${styles.CommentCreateForm}`} onSubmit={handleSubmit}>
+    <Form
+      className={`mt-2 ${styles.CommentCreateForm}`}
+      onSubmit={handleSubmit}
+    >
       <Link to={`/profiles/${profile_id}`} className={styles.noUnderline}>
-        <AvatarComponent src={currentUser?.profile_image} text={currentUser?.username} height={45} showInitialOnly={true} />
+        <AvatarComponent
+          src={currentUser?.profile_image}
+          text={currentUser?.username}
+          height={45}
+          showInitialOnly={true}
+        />
       </Link>
       <InputGroup className={styles.InputGroup}>
         <Form.Control

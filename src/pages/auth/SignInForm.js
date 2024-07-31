@@ -42,7 +42,9 @@ function SignInForm() {
   return (
     <Row className={styles.Row}>
       <Col className="my-auto p-0 p-md-2" md={6}>
-<Container className={`${appStyles.Content} p-4 mt-3 mt-md-5 ${styles.FormContainer}`}>
+        <Container
+          className={`${appStyles.Content} p-4 mt-3 mt-md-5 ${styles.FormContainer}`}
+        >
           <h1 className={styles.Header}>Sign in</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
@@ -89,20 +91,29 @@ function SignInForm() {
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
-              style={{ marginTop: '1rem' }} 
+              style={{ marginTop: "1rem" }}
             >
               Sign in
             </Button>
           </Form>
         </Container>
-        <Container className={`mt-3 ${appStyles.Content} ${styles.LinkContainer}`}>
+        <Container
+          className={`mt-3 ${appStyles.Content} ${styles.LinkContainer}`}
+        >
           <Link className={styles.Link} to="/signup">
             Don't have an account? <span>Sign up now!</span>
           </Link>
         </Container>
       </Col>
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
-        <img src={PansiesImage} alt="Pansies" className={`img-fluid ${styles.PansiesImage}`} />
+      <Col
+        md={6}
+        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+      >
+        <img
+          src={PansiesImage}
+          alt="Pansies"
+          className={`img-fluid ${styles.PansiesImage}`}
+        />
       </Col>
     </Row>
   );

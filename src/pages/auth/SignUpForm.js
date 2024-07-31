@@ -5,8 +5,8 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
-import validator from 'validator';
-import IrisImage from '../../assets/iris.JPG';
+import validator from "validator";
+import IrisImage from "../../assets/iris.JPG";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -26,20 +26,24 @@ const SignUpForm = () => {
       [event.target.name]: event.target.value,
     });
 
-    if (event.target.name === 'password1') {
+    if (event.target.name === "password1") {
       const passwordErrors = [];
       if (!validator.isLength(event.target.value, { min: 8 })) {
-        passwordErrors.push('Password must be at least 8 characters long.');
+        passwordErrors.push("Password must be at least 8 characters long.");
       }
 
-      if (!validator.isStrongPassword(event.target.value, {
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minSymbols: 1,
-        minNumbers: 1
-      })) {
-        passwordErrors.push('Password must contain at least one uppercase letter, lowercase letter, number, and symbol.');
+      if (
+        !validator.isStrongPassword(event.target.value, {
+          minLength: 8,
+          minLowercase: 1,
+          minUppercase: 1,
+          minSymbols: 1,
+          minNumbers: 1,
+        })
+      ) {
+        passwordErrors.push(
+          "Password must contain at least one uppercase letter, lowercase letter, number, and symbol."
+        );
       }
 
       setErrors((prevErrors) => ({
@@ -57,25 +61,27 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password1 !== password2) {
-        setErrors({ password2: ["Passwords don't match"]});
-        return; 
+      setErrors({ password2: ["Passwords don't match"] });
+      return;
     }
 
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
       navigate("/signin");
     } catch (error) {
-        console.error("Error during request:", error.response.data);
-        setErrors({}); 
-        setGeneralError("An unexpected error occurred. Please try again.");
-        console.error("Error during request:", error.response);
+      console.error("Error during request:", error.response.data);
+      setErrors({});
+      setGeneralError("An unexpected error occurred. Please try again.");
+      console.error("Error during request:", error.response);
     }
   };
 
   return (
     <Row className={styles.Row}>
       <Col className="my-auto p-0 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 ${styles.FormContainer}`}>
+        <Container
+          className={`${appStyles.Content} p-4 ${styles.FormContainer}`}
+        >
           <h1 className={styles.Header}>Sign up</h1>
 
           <Form onSubmit={handleSubmit}>
@@ -106,13 +112,12 @@ const SignUpForm = () => {
                 onChange={handleChange}
                 isInvalid={!!errors.password1}
               />
-              {errors.password1?.length > 0 && (
+              {errors.password1?.length > 0 &&
                 errors.password1.map((message, idx) => (
                   <Alert variant="warning" key={idx}>
                     {message}
                   </Alert>
-                ))
-              )}
+                ))}
             </Form.Group>
 
             <Form.Group controlId="password2">
@@ -135,7 +140,7 @@ const SignUpForm = () => {
             <Button
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
-              style={{ marginTop: '1rem' }} 
+              style={{ marginTop: "1rem" }}
             >
               Sign up
             </Button>
@@ -148,14 +153,23 @@ const SignUpForm = () => {
           </Form>
         </Container>
 
-        <Container className={`mt-3 ${appStyles.Content} ${styles.LinkContainer}`}>
+        <Container
+          className={`mt-3 ${appStyles.Content} ${styles.LinkContainer}`}
+        >
           <Link className={styles.Link} to="/signin">
             Already have an account? <span>Sign in</span>
           </Link>
         </Container>
       </Col>
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
-        <img src={IrisImage} alt="Iris" className={`img-fluid ${styles.IrisImage}`} />
+      <Col
+        md={6}
+        className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}
+      >
+        <img
+          src={IrisImage}
+          alt="Iris"
+          className={`img-fluid ${styles.IrisImage}`}
+        />
       </Col>
     </Row>
   );

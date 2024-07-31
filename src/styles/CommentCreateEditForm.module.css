@@ -1,99 +1,92 @@
-
- 
 .CommentCreateForm {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #FBEAFF;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .CommentCreateForm img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .CommentCreateForm .InputGroup {
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-  
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #fbeaff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .CommentCreateForm .InputGroup textarea {
-    flex-grow: 1;
-    background-color: #FBEAFF;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px 0 0 5px;
-    font-size: 14px;
-    resize: none;
-    margin-right: 5px; 
-  }
-  
-  
-  .CommentCreateForm .InputGroup button {
-    color: white;
-    background-color: #be64c8;
-    padding: 10px 20px;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .CommentCreateForm .InputGroup button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .CommentCreateForm .InputGroup button:hover:not(:disabled) {
-    background-color: #389f87;
-  }
-  
- 
-  .CancelButton {
-    background-color: #bc60c3;
-    padding: 8px 16px;
-    margin-top: 8px;
-    border: none;
-    border-radius: 8px; 
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .CancelButton:hover {
-    background-color: #ad3a8e;
-  }
-  
-  .SaveButton {
-    background-color: #28a789;
-    padding: 8px 16px;
-    margin-left: 8px;
-    border: none;
-    border-radius: 8px; 
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .SaveButton:hover {
-    background-color: #21885d;
-  }
-  
-  .Button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+.CommentCreateForm img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
 
-  .noUnderline {
-    text-decoration: none;
-    color: inherit;
-  }
-  
+.CommentCreateForm .InputGroup {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.CommentCreateForm .InputGroup textarea {
+  flex-grow: 1;
+  background-color: #fbeaff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px 0 0 5px;
+  font-size: 14px;
+  resize: none;
+  margin-right: 5px;
+}
+
+.CommentCreateForm .InputGroup button {
+  color: white;
+  background-color: #be64c8;
+  padding: 10px 20px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.CommentCreateForm .InputGroup button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.CommentCreateForm .InputGroup button:hover:not(:disabled) {
+  background-color: #389f87;
+}
+
+.CancelButton {
+  background-color: #bc60c3;
+  padding: 8px 16px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.CancelButton:hover {
+  background-color: #ad3a8e;
+}
+
+.SaveButton {
+  background-color: #28a789;
+  padding: 8px 16px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.SaveButton:hover {
+  background-color: #21885d;
+}
+
+.Button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.noUnderline {
+  text-decoration: none;
+  color: inherit;
+}

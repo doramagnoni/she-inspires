@@ -18,12 +18,12 @@ const Profile = (props) => {
     <div className={`${styles.Profile} ${mobile ? styles.ProfileMobile : ""}`}>
       <div>
         <Link className={styles.noUnderline} to={`/profiles/${id}`}>
-          <AvatarComponent 
-            src={image} 
-            height={imageSize} 
-            text={owner} 
-            showInitialOnly={!image} 
-            showName={false}  
+          <AvatarComponent
+            src={image}
+            height={imageSize}
+            text={owner}
+            showInitialOnly={!image}
+            showName={false}
           />
         </Link>
       </div>
@@ -31,8 +31,9 @@ const Profile = (props) => {
         <strong>{owner}</strong> {/* Display the owner’s name */}
         {!mobile && (
           <div className={styles.ButtonContainer}>
-            {currentUser && !is_owner && (
-              following_id ? (
+            {currentUser &&
+              !is_owner &&
+              (following_id ? (
                 <Button
                   className={`${styles.Button} ${styles.BlackOutline}`}
                   onClick={() => handleUnfollow(profile)}
@@ -46,8 +47,7 @@ const Profile = (props) => {
                 >
                   Follow
                 </Button>
-              )
-            )}
+              ))}
           </div>
         )}
       </div>

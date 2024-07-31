@@ -1,62 +1,61 @@
 .Container {
-    max-width: 600px; 
-    margin: 0 auto; 
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #FBEAFF; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .ProfileImageWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    margin-bottom: 20px; 
-  }
-  
-  .ProfileImage {
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .ChangeImageButton {
-    margin-top: 10px; 
-  }
-  
-  .FormGroup {
-    margin-bottom: 20px; 
-  }
-  
-  .FormLabel {
-    font-weight: bold; 
-  }
-  
-  .FormControl {
-    border-radius: 4px; 
-  }
-  
-  .Alert {
-    margin-top: 10px; 
-  }
-  
-  .Button {
-    margin-top: 10px; 
-  }
-  
-  .CancelButton {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-  }
-  
-  .SaveButton {
-    background-color: #343a40;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-  }
-  
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fbeaff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ProfileImageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ProfileImage {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ChangeImageButton {
+  margin-top: 10px;
+}
+
+.FormGroup {
+  margin-bottom: 20px;
+}
+
+.FormLabel {
+  font-weight: bold;
+}
+
+.FormControl {
+  border-radius: 4px;
+}
+
+.Alert {
+  margin-top: 10px;
+}
+
+.Button {
+  margin-top: 10px;
+}
+
+.CancelButton {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+}
+
+.SaveButton {
+  background-color: #343a40;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+}

@@ -1,18 +1,14 @@
-
 .dropdownToggle {
-    
-    color: red; 
-  }
-  
-  .dropdownMenu {
-   
-    background-color: #f0f0f0; 
-    position: absolute; 
-    top: 100%; 
-  }
-  
-  .DropdownItem {
-    
-    padding: 8px 16px; 
-    cursor: pointer;
-  }
+  color: red;
+}
+
+.dropdownMenu {
+  background-color: #f0f0f0;
+  position: absolute;
+  top: 100%;
+}
+
+.DropdownItem {
+  padding: 8px 16px;
+  cursor: pointer;
+}

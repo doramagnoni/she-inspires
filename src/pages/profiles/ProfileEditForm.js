@@ -5,7 +5,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-import { useCurrentUser, useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext";
 import { useParams, useNavigate } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/ProfileEditForm.module.css";
@@ -52,7 +55,7 @@ function ProfileEditForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image); 
+      URL.revokeObjectURL(image);
       setProfileData({
         ...profileData,
         image: URL.createObjectURL(event.target.files[0]),
@@ -110,7 +113,7 @@ function ProfileEditForm() {
                 accept="image/*"
                 onChange={handleChangeImage}
                 ref={imageInput}
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
               />
             </div>
 
