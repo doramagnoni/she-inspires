@@ -371,6 +371,31 @@ git push heroku master
 **Solutions:** Specificity and Overriding - I used ore specific selectors or !important to override conflicting styles. 
 
 
+**2. Browser-Specific Issues
+Incognito Mode
+
+Issue:
+In incognito or private browsing mode, browsers may block third-party cookies and cross-site tracking, impacting functionalities like authentication, liking, and commenting.
+
+Potential Solution:
+
+Use Standard Browsing Mode: For complete functionality, use a standard browsing mode.
+Browser Settings: If incognito mode is necessary, be aware that some features may be limited due to these restrictions.
+
+
+Safari’s Cross-Site Tracking Prevention
+
+Issue:
+Safari’s cross-site tracking prevention can block third-party cookies, affecting functionalities reliant on these cookies for session management.
+
+Potential Solution:
+
+Adjust Safari Settings: Temporarily disable "Prevent Cross-Site Tracking" in Safari’s Privacy settings:
+Open Safari and go to Preferences.
+Navigate to the Privacy tab.
+Uncheck the box for "Prevent cross-site tracking."
+
+
 ## 🙏 Acknowledgments
 
 I want to express my sincere gratitude to the following individuals and resources for their invaluable contributions and support in the making of this project:

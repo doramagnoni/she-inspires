@@ -8,16 +8,16 @@ export const axiosReq = axios.create();
 export const axiosRes = axios.create();
 
 async function refreshToken() {
-    try {
-      const response = await axios.post('/dj-rest-auth/token/refresh/', {
-        refresh_token: localStorage.getItem('refreshToken')
-      });
-      return response.data.access_token; // Adjust according to your response structure
-    } catch (error) {
-      console.error('Failed to refresh token:', error);
-      throw error;
-    }
+  try {
+    const response = await axios.post('/dj-rest-auth/token/refresh/', {
+      refresh_token: localStorage.getItem('refreshToken')
+    });
+    return response.data.access_token; // Adjust according to your response structure
+  } catch (error) {
+    console.error('Failed to refresh token:', error);
+    throw error;
   }
+}
 
 axiosReq.interceptors.request.use(
   (config) => {
